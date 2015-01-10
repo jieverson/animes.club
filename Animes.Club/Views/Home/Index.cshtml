@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html ng-app="AnimesClub">
+<head>
+    <base href="/">
+    <meta charset="utf-8" />
+    <title>Animes.club</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @Styles.Render("~/Content/css")
+    @*<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>*@
+</head>
+
+<body>
+    <header class="navbar navbar-default navbar-fixed-top">
+        @Html.Partial("_NavBar")
+    </header>
+
+    @Html.Partial("_LeftMenu")
+
+    <main>
+        <div class="container-fluid">
+            <ng-view></ng-view>
+        </div>
+    </main>
+
+    @*<footer class="text-center">
+            <div class="container">
+                <a href="/faq" class="col-md-4">FAQ</a>
+                <a href="/terms" class="col-md-4">Terms</a>
+                <a href="mailto:contact@animes.club" class="col-md-4">Contact Us</a>
+            </div>
+
+            <p>©Animes.club - Caroline Froehlich, Jiéverson Maissiat, 2014. All right reserved. </p>
+        </footer>*@
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/app")
+    @Scripts.Render("~/bundles/components")
+</body>
+</html>

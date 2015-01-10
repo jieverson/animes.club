@@ -1,0 +1,14 @@
+﻿<nav class="left-menu" data-spy="affix" data-offset-top="50" ng-controller="Menu">
+    <ul class="list-unstyled">
+        <li ng-repeat="item in items">
+            <span ng-hide="item.show" class="text-muted">{{item.group}}</span>
+
+            <h5 ng-hide="item.group" ng-class="{ 'text-danger': item.selected() }">
+                <a href="{{item.url}}" ng-hide="item.selected()"><i ng-show="item.icon" class="fa {{item.icon}}"></i>{{item.text}}</a>
+                <span ng-show="item.selected()"><i ng-show="item.icon" class="fa {{item.icon}}"></i>{{item.text}}</span>
+                <span ng-show="item.badge" class="badge alert-danger">{{item.badge}}</span>
+                <small ng-show="item.hint" class="text-muted">{{item.hint}}</small>
+            </h5>
+        </li>
+    </ul>
+</nav>
