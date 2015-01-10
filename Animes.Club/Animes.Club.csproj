@@ -236,6 +236,12 @@
     <Content Include="css\animes.club.min.css">
       <DependentUpon>animes.club.css</DependentUpon>
     </Content>
+    <Content Include="css\animes.club.theme.css">
+      <DependentUpon>animes.club.theme.less</DependentUpon>
+    </Content>
+    <Content Include="css\animes.club.theme.min.css">
+      <DependentUpon>animes.club.theme.css</DependentUpon>
+    </Content>
     <Content Include="css\animes.club.variables.css">
       <DependentUpon>animes.club.variables.less</DependentUpon>
     </Content>
@@ -244,6 +250,18 @@
     </Content>
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\bootswatch.darkly.variables.css">
+      <DependentUpon>bootswatch.darkly.variables.less</DependentUpon>
+    </Content>
+    <Content Include="css\bootswatch.darkly.variables.min.css">
+      <DependentUpon>bootswatch.darkly.variables.css</DependentUpon>
+    </Content>
+    <Content Include="css\bootswatch.flatly.variables.css">
+      <DependentUpon>bootswatch.flatly.variables.less</DependentUpon>
+    </Content>
+    <Content Include="css\bootswatch.flatly.variables.min.css">
+      <DependentUpon>bootswatch.flatly.variables.css</DependentUpon>
+    </Content>
     <Content Include="css\font-awesome.css" />
     <Content Include="css\font-awesome.min.css" />
     <Content Include="css\prefixer.css">
@@ -315,7 +333,15 @@
     <Content Include="css\animes.club.css.map">
       <DependentUpon>animes.club.css</DependentUpon>
     </Content>
+    <Content Include="css\animes.club.theme.css.map">
+      <DependentUpon>animes.club.theme.css</DependentUpon>
+    </Content>
+    <None Include="css\animes.club.theme.less" />
     <None Include="css\animes.club.variables.less" />
+    <Content Include="css\bootswatch.flatly.less" />
+    <Content Include="css\bootswatch.flatly.variables.less" />
+    <Content Include="css\bootswatch.darkly.variables.less" />
+    <Content Include="css\bootswatch.darkly.less" />
     <None Include="Properties\PublishProfiles\animesclub.pubxml" />
     <Content Include="scripts\errors.json" />
     <Content Include="scripts\angular-touch.min.js.map" />
