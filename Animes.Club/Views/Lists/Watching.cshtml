@@ -1,1 +1,20 @@
-﻿Oi
+﻿<div class="anime-list">
+    <h1 class="title">Currently Watching</h1>
+
+    <div class="row-fluid" ng-controller="MyLists">
+        <div class="col-sm-6 col-md-4" ng-repeat="item in watching">
+            <div class="thumbnail">
+                <img src="{{item.picture}}" alt="{{item.name}}" class="pull-left">
+                <div class="caption">
+                    <h4 style=""><a href="/anime/{{item.id}}/{{item.name.split(' ').join('-')}}">{{item.name}}</a></h4>
+                    <p>
+                        OVA
+                    </p>
+                    <p>
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

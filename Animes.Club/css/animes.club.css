@@ -74,28 +74,21 @@ main {
 footer .container {
   width: 350px;
 }
-/*.anime-list{
-	.title {
-		padding-left: 15px;
-		padding-bottom: 15px;
-	}
-
-	.thumbnail {
-		height: 150px;
-
-		img {
-			height: 140px;
-			margin-right: 12px;
-		}
-
-		.caption{
-
-		}
-	}
-}*/
+.anime-list .title {
+  padding-left: 15px;
+  padding-bottom: 15px;
+}
+.anime-list .thumbnail {
+  height: 150px;
+}
+.anime-list .thumbnail img {
+  height: 140px;
+  margin-right: 12px;
+}
 /*.anime-profile {
 	.thumbnail {
 		width: 200px;
 		margin-left: auto;
 	}
 }*/
+/*# sourceMappingURL=animes.club.css.map */

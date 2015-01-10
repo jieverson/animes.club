@@ -15,7 +15,7 @@ namespace Animes.Club
 
             routes.MapRoute(
                 name: "API",
-                url: "api/{controller}/{action}/{id}",
+                url: "api/{controller}/{id}",
                 defaults: new { id = UrlParameter.Optional }
             );
 

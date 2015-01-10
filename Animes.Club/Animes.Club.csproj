@@ -205,6 +205,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AnimeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ListsController.cs" />
     <Compile Include="Controllers\MeController.cs" />
@@ -280,8 +281,10 @@
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\angular.min.js" />
     <Content Include="scripts\app\app.js" />
-    <Content Include="scripts\app\controllers\menu.js" />
-    <Content Include="scripts\app\controllers\search.js" />
+    <Content Include="scripts\app\controller\menu.js" />
+    <Content Include="scripts\app\controller\my-list.js" />
+    <Content Include="scripts\app\controller\search.js" />
+    <Content Include="scripts\app\service\anime.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -309,6 +312,9 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="css\prefixer.less" />
+    <Content Include="css\animes.club.css.map">
+      <DependentUpon>animes.club.css</DependentUpon>
+    </Content>
     <None Include="css\animes.club.variables.less" />
     <None Include="Properties\PublishProfiles\animesclub.pubxml" />
     <Content Include="scripts\errors.json" />

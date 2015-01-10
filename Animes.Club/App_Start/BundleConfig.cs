@@ -18,8 +18,10 @@ namespace Animes.Club
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                 "~/scripts/app/app.js",
-                "~/scripts/app/controllers/menu.js",
-                "~/scripts/app/controllers/search.js"
+                "~/scripts/app/controller/menu.js",
+                "~/scripts/app/controller/search.js",
+                "~/scripts/app/service/anime.js",
+                "~/scripts/app/controller/my-list.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
