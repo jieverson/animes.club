@@ -1,0 +1,9 @@
+{
+  "version": 3,
+  "file": "animes.club.bootstrap.css",
+  "sources": [
+    "animes.club.bootstrap.less"
+  ],
+  "names": [],
+  "mappings": "AAAA,YAAa;EACT,WAAA"
+}

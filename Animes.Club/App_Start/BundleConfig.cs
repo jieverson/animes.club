@@ -10,9 +10,8 @@ namespace Animes.Club
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                 "~/css/bootstrap.css",
+                 "~/css/bootstrap/bootstrap.css",
                  "~/css/font-awesome.css",
-                 //"~/css/animes.club.theme.css",
                  "~/css/animes.club.css"
                  ));
 
@@ -20,8 +19,8 @@ namespace Animes.Club
                 "~/scripts/app/app.js",
                 "~/scripts/app/controller/menu.js",
                 "~/scripts/app/controller/search.js",
-                "~/scripts/app/service/anime.js",
-                "~/scripts/app/controller/my-list.js"
+                "~/scripts/app/controller/my-list.js",
+                "~/scripts/app/service/anime.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
