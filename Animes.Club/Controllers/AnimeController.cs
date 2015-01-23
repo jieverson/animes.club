@@ -22,10 +22,14 @@ namespace Animes.Club.Controllers
         // GET: api/Anime?filter=abc
         public IEnumerable<Anime> Get(String q)
         {
-            using (var context = new Animes.Club.Models.AnimesClubContext())
+            if (q.Length > 1)
             {
-                return context.Animes.Where(x => x.name.ToLower().Contains(q.ToLower())).ToList();
+                using (var context = new Animes.Club.Models.AnimesClubContext())
+                {
+                    return context.Animes.Where(x => x.name.ToLower().Contains(q.ToLower())).ToList();
+                }
             }
+            return null;
         }
 
         //// GET: api/Anime/5

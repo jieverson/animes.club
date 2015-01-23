@@ -1190,6 +1190,9 @@
     <Content Include="scripts\sammy-0.7.4.min.js" />
     <Content Include="scripts\typeahead.bundle.js" />
     <Content Include="scripts\_references.js" />
+    <Content Include="sql\anidb_import.sql" />
+    <Content Include="sql\create_anidb.sql" />
+    <Content Include="sql\import_from_anidb.sql" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />

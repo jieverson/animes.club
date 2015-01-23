@@ -1,0 +1,21 @@
+﻿CREATE TABLE [dbo].[anidb] (
+    [id]            INT            NOT NULL,
+    [anidbid]       INT            NOT NULL,
+    [title]         VARCHAR (255)  NOT NULL,
+    [type]          VARCHAR (32)   NOT NULL,
+    [startdate]     DATE           NULL,
+    [enddate]       DATE           NULL,
+    [related]       VARCHAR (1024) NOT NULL,
+    [creators]      VARCHAR (1024) NOT NULL,
+    [description]   TEXT           NOT NULL,
+    [rating]        VARCHAR (5)    NOT NULL,
+    [picture]       VARCHAR (16)   NOT NULL,
+    [categories]    VARCHAR (1024) NOT NULL,
+    [characters]    VARCHAR (1024) NOT NULL,
+    [epnos]         VARCHAR (2048) NOT NULL,
+    [airdates]      TEXT           NOT NULL,
+    [episodetitles] TEXT           NOT NULL,
+    [unixtime]      INT            NOT NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC),
+    CONSTRAINT [AK_Unique] UNIQUE NONCLUSTERED ([anidbid] ASC)
+);

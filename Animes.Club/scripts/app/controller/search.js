@@ -26,7 +26,7 @@
                 '<a href="/anime/999/{{value}}">' +
                     '<ul style="list-style-type: none;">' +
                         '<li style="display: inline;">' +
-                            '<img src="{{picture}}" class="img-circle" style="width:50px;height:50px;"/>' +
+                            '<img src="http://animesclub.blob.core.windows.net/covers/{{picture}}" class="img-circle" style="width:50px;height:50px;"/>' +
                         '</li>' +
                         '<li style="display: inline;">' +
                             '{{name}}' +
