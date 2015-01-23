@@ -5,6 +5,10 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Animes.Club.Service;
 
 namespace Animes.Club.Controllers
 {
@@ -24,13 +28,24 @@ namespace Animes.Club.Controllers
         {
             if (q.Length > 1)
             {
+                //var a = CloudConfigurationManager.GetSetting("StorageConnectionString");
+                var a = "DefaultEndpointsProtocol=http;AccountName=animesclub;AccountKey=wwOQtRoXycqHoNr+Q3f6YFDg1QJECpuG/MiK+TywaGR8uDQtMSF76b107WZwOrg6gPbX3KhF5Pbt0aAQIMQv5w==";
+                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(a);
+                CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+                CloudBlobContainer container = blobClient.GetContainerReference("covers");
+                DateTime expiryTime = DateTime.UtcNow.AddHours(1);
+
                 using (var context = new Animes.Club.Models.AnimesClubContext())
                 {
-                    return context.Animes.Where(x => x.name.ToLower().Contains(q.ToLower())).ToList();
+                    var result = context.Animes.Where(x => x.name.ToLower().Contains(q.ToLower())).Take(10).ToList();
+                    result.ForEach(x => x.picture = BlobService.GetBlobSasUri(container, x.picture, expiryTime));
+                    return result;
                 }
             }
             return null;
         }
+
+        
 
         //// GET: api/Anime/5
         //public string Get(int id)

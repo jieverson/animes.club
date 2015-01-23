@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configura
 		PublishScripts\Configurations\AnimesClub-WAWS-dev.json = PublishScripts\Configurations\AnimesClub-WAWS-dev.json
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Animes.Club.Crawler", "Animes.Club.Crawler\Animes.Club.Crawler.csproj", "{68F785CB-105C-46C4-ACEB-BEDBB6C3C292}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{1AA3468D-B8DD-4CA6-B9F1-F11FD69F8A37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AA3468D-B8DD-4CA6-B9F1-F11FD69F8A37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AA3468D-B8DD-4CA6-B9F1-F11FD69F8A37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68F785CB-105C-46C4-ACEB-BEDBB6C3C292}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68F785CB-105C-46C4-ACEB-BEDBB6C3C292}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68F785CB-105C-46C4-ACEB-BEDBB6C3C292}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68F785CB-105C-46C4-ACEB-BEDBB6C3C292}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
