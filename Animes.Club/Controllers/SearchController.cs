@@ -11,6 +11,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
 using Animes.Club.Service;
 using System.Web.Mvc;
 using Animes.Club.DTOs;
+using System.Text.RegularExpressions;
 
 namespace Animes.Club.Controllers
 {
@@ -40,7 +41,7 @@ namespace Animes.Club.Controllers
                 {
                     id = x.id,
                     name = x.name,
-                    address = x.name.Replace(' ', '_'),
+                    address = Regex.Replace(x.name, @"[^0-9a-zA-Z\._]", "_"),
                     picture = BlobService.GetBlobSasUri(container, x.picture, expiryTime)
                 });
             }

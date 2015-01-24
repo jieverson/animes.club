@@ -27,5 +27,13 @@ namespace Animes.Club.Models
 
         public String picture { get; set; }
 
+        public virtual ICollection<Watching> watching { get; set; }
+
+        public virtual ICollection<Completed> completed { get; set; }
+
+        public virtual ICollection<Todo> todo { get; set; }
+
+        public virtual ICollection<Dropped> dropped { get; set; }
+
     }
 }
