@@ -47,11 +47,21 @@ namespace Animes.Club.Controllers
             }
         }
 
-        //// GET: api/Anime/5
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
+        // GET: api/Anime/5
+        public Anime Get(long id)
+        {
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
+            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+            CloudBlobContainer container = blobClient.GetContainerReference("covers");
+            DateTime expiryTime = DateTime.UtcNow.AddSeconds(30);
+
+            using (var context = new Animes.Club.Models.AnimesClubContext())
+            {
+                var anime = context.Animes.Find(id);
+                anime.picture = BlobService.GetBlobSasUri(container, anime.picture, expiryTime);
+                return anime;
+            }
+        }
 
         //// POST: api/Anime
         //public void Post([FromBody]string value)

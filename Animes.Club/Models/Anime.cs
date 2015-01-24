@@ -19,5 +19,9 @@ namespace Animes.Club.Models
 
         public String picture { get; set; }
 
+        public String description { get; set; }
+
+        public float? rating { get; set; }
+
     }
 }

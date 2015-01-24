@@ -267,6 +267,14 @@
     <Compile Include="Migrations\201501240709536_anime list table names.Designer.cs">
       <DependentUpon>201501240709536_anime list table names.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501240814102_anime description and rate.cs" />
+    <Compile Include="Migrations\201501240814102_anime description and rate.Designer.cs">
+      <DependentUpon>201501240814102_anime description and rate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501240817280_anime rating.cs" />
+    <Compile Include="Migrations\201501240817280_anime rating.Designer.cs">
+      <DependentUpon>201501240817280_anime rating.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Anime.cs" />
@@ -1324,6 +1332,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501240709536_anime list table names.resx">
       <DependentUpon>201501240709536_anime list table names.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501240814102_anime description and rate.resx">
+      <DependentUpon>201501240814102_anime description and rate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501240817280_anime rating.resx">
+      <DependentUpon>201501240817280_anime rating.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

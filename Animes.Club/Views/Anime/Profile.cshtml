@@ -2,11 +2,11 @@
     <div class="row">
         <div class="col-md-4">
             <div class="thumbnail">
-                <img src="http://cdn.myanimelist.net/images/anime/3/60551.jpg" alt="Fairy Tail" />
+                <img ng-src="{{anime.picture}}" />
             </div>
         </div>
         <div class="col-md-6">
-            <h1 class="col-md-12">Fairy Tail</h1>
+            <h1 class="col-md-12" ng-bind="anime.name"></h1>
 
             <p class="col-md-12">
                 <span class="label label-default">Shounen</span>
@@ -17,9 +17,7 @@
                 <span class="label label-success">Adventure</span>
             </p>
 
-            <p class="col-md-12 text-justify">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris porta ornare vehicula. Nullam risus massa, interdum quis fermentum sed, blandit aliquam eros. Nulla facilisi. Quisque tristique, nisl vel pulvinar interdum, velit nisl rhoncus ligula, eu bibendum lacus ipsum nec erat. Suspendisse cursus et leo eu aliquam. Duis semper scelerisque tortor. Pellentesque id faucibus libero. Suspendisse potenti.
-            </p>
+            <p class="col-md-12 text-justify" ng-bind="anime.description"></p>
 
             <form role="form" class="form-horizontal">
                 <div class="col-md-6">
@@ -33,6 +31,7 @@
                     </select>
                 </div>
             </form>
+
         </div>
     </div>
 </div>
