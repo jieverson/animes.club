@@ -89,10 +89,8 @@ footer .container {
   height: 140px;
   margin-right: 12px;
 }
-/*.anime-profile {
-	.thumbnail {
-		width: 200px;
-		margin-left: auto;
-	}
-}*/
+.anime-profile .thumbnail {
+  width: 200px;
+  margin-left: auto;
+}
 /*# sourceMappingURL=animes.club.css.map */

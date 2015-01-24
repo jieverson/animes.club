@@ -16,7 +16,7 @@ namespace Animes.Club.Migrations
                         picture = c.String(),
                     })
                 .PrimaryKey(t => t.id);
-            
+
             CreateTable(
                 "dbo.AspNetRoles",
                 c => new
@@ -26,7 +26,7 @@ namespace Animes.Club.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.Name, unique: true, name: "RoleNameIndex");
-            
+
             CreateTable(
                 "dbo.AspNetUserRoles",
                 c => new
@@ -39,7 +39,7 @@ namespace Animes.Club.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId)
                 .Index(t => t.RoleId);
-            
+
             CreateTable(
                 "dbo.AspNetUsers",
                 c => new
@@ -60,7 +60,7 @@ namespace Animes.Club.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.UserName, unique: true, name: "UserNameIndex");
-            
+
             CreateTable(
                 "dbo.AspNetUserClaims",
                 c => new
@@ -73,7 +73,7 @@ namespace Animes.Club.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
-            
+
             CreateTable(
                 "dbo.AspNetUserLogins",
                 c => new

@@ -7,10 +7,10 @@ using System.Web;
 
 namespace Animes.Club.Models
 {
-    public class AnimesClubContext : IdentityDbContext<ApplicationUser>
+    public class AnimesClubContext : DbContext
     {
         public AnimesClubContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("DefaultConnection")
         {
         }
 
@@ -20,6 +20,8 @@ namespace Animes.Club.Models
         }
 
         public DbSet<Anime> Animes { get; set; }
+
+        public DbSet<User> Users { get; set; }
 
     }
 }

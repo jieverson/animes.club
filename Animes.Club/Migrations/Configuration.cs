@@ -1,6 +1,7 @@
 namespace Animes.Club.Migrations
 {
     using Animes.Club.Models;
+    using Animes.Club.Service;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -15,18 +16,10 @@ namespace Animes.Club.Migrations
 
         protected override void Seed(AnimesClubContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            context.Users.AddOrUpdate(
+                a => a.username,
+                new User { username = "xereta", password = PasswordService.GetHash("info3000"), email = "contact@jieverson.com" }
+                );
 
             //context.Animes.AddOrUpdate(
             //    a => a.name,

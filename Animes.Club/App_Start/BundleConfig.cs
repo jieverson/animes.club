@@ -19,6 +19,8 @@ namespace Animes.Club
                 "~/scripts/app/app.js",
                 "~/scripts/app/controller/menu.js",
                 "~/scripts/app/controller/search.js",
+                "~/scripts/app/controller/user.js",
+                "~/scripts/app/controller/anime.js",
                 "~/scripts/app/controller/my-list.js",
                 "~/scripts/app/service/anime.js"
                 ));

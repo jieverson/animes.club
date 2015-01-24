@@ -13,21 +13,21 @@ namespace Animes.Club.Crawler
         static void Main(string[] args)
         {
 
-            using (WebClient Client = new WebClient())
-            {
+            //using (WebClient Client = new WebClient())
+            //{
 
-                using (var context = new Entities())
-                {
-                    foreach (var anime in context.Animes)
-                    {
-                        if (!String.IsNullOrEmpty(anime.picture))
-                        {
-                            Client.DownloadFile("http://img7.anidb.net/pics/anime/" + anime.picture, "./covers/" + anime.picture);
-                        }
-                    }
-                }
+            //    using (var context = new Entities())
+            //    {
+            //        foreach (var anime in context.Animes)
+            //        {
+            //            if (!String.IsNullOrEmpty(anime.picture))
+            //            {
+            //                Client.DownloadFile("http://img7.anidb.net/pics/anime/" + anime.picture, "./covers/" + anime.picture);
+            //            }
+            //        }
+            //    }
 
-            }
+            //}
 
 
         }

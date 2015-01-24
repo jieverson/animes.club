@@ -116,6 +116,9 @@
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="PasswordHash">
+      <HintPath>..\packages\PasswordHash.1.1\lib\net40\PasswordHash.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -228,9 +231,11 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AnimeController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ListsController.cs" />
     <Compile Include="Controllers\MeController.cs" />
+    <Compile Include="DTOs\SearchResultDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -238,16 +243,33 @@
     <Compile Include="Migrations\201501100654387_first migration.Designer.cs">
       <DependentUpon>201501100654387_first migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501240434329_Users.cs" />
+    <Compile Include="Migrations\201501240434329_Users.Designer.cs">
+      <DependentUpon>201501240434329_Users.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501240500448_Notations.cs" />
+    <Compile Include="Migrations\201501240500448_Notations.Designer.cs">
+      <DependentUpon>201501240500448_Notations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501240519289_More Notations.cs" />
+    <Compile Include="Migrations\201501240519289_More Notations.Designer.cs">
+      <DependentUpon>201501240519289_More Notations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501240531405_none.cs" />
+    <Compile Include="Migrations\201501240531405_none.Designer.cs">
+      <DependentUpon>201501240531405_none.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Anime.cs" />
     <Compile Include="Models\AnimesClubContext.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\MeViewModels.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Service\BlobService.cs" />
+    <Compile Include="Service\PasswordService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -328,9 +350,11 @@
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\angular.min.js" />
     <Content Include="scripts\app\app.js" />
+    <Content Include="scripts\app\controller\anime.js" />
     <Content Include="scripts\app\controller\menu.js" />
     <Content Include="scripts\app\controller\my-list.js" />
     <Content Include="scripts\app\controller\search.js" />
+    <Content Include="scripts\app\controller\user.js" />
     <Content Include="scripts\app\service\anime.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
@@ -1254,6 +1278,7 @@
     <Content Include="Views\Lists\Completed.cshtml" />
     <Content Include="Views\Lists\Dropped.cshtml" />
     <Content Include="Views\Lists\Todo.cshtml" />
+    <Content Include="Views\Anime\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1268,6 +1293,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201501100654387_first migration.resx">
       <DependentUpon>201501100654387_first migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501240434329_Users.resx">
+      <DependentUpon>201501240434329_Users.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501240500448_Notations.resx">
+      <DependentUpon>201501240500448_Notations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501240519289_More Notations.resx">
+      <DependentUpon>201501240519289_More Notations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501240531405_none.resx">
+      <DependentUpon>201501240531405_none.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

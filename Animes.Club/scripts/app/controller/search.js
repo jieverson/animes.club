@@ -2,7 +2,7 @@
 	var animes = new Bloodhound({
 	    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
 	    queryTokenizer: Bloodhound.tokenizers.whitespace,
-	    remote: '/api/anime?q=%QUERY'
+	    remote: '/api/search?q=%QUERY'
 	});
 
     animes.initialize();
@@ -10,7 +10,7 @@
     $('#search-animes').typeahead({
         hint: true,
         highlight: true,
-        minLength: 1
+        minLength: 2
     },
     {
         name: 'animes',
@@ -23,7 +23,7 @@
               '</div>'
             ].join('\n'),
             suggestion: Handlebars.compile([
-                '<a href="/anime/999/{{value}}">' +
+                '<a href="/anime/{{id}}/{{address}}">' +
                     '<ul style="list-style-type: none;">' +
                         '<li style="display: inline;">' +
                             '<img src="{{picture}}" class="img-circle" style="width:50px;height:50px;"/>' +
