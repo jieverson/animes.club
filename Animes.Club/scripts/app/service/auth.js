@@ -5,8 +5,36 @@
         return $http
           .post('/api/login', { email: email, password: password, remember: remember })
           .then(function (result) {
-              Session.create(result.data.sessionId, result.data.user.id);
-              return result.data.user;
+              if (result.data) {
+                  Session.create(result.data.sessionId, result.data.user.id);
+                  return result.data.user;
+              }
+              else {
+                  return null;
+              }
+          });
+    };
+
+    authService.logout = function (email, password, remember) {
+        return $http
+          .delete('/api/login')
+          .then(function (result) {
+              Session.destroy();
+              return null;
+          });
+    };
+
+    authService.checkAuthenticate = function () {
+        return $http
+          .get('/api/login')
+          .then(function (result) {
+              if (result.data) {
+                  Session.create(result.data.sessionId, result.data.user.id);
+                  return result.data.user;
+              }
+              else {
+                  return null;
+              }
           });
     };
 

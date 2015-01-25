@@ -1,5 +1,4 @@
 ﻿App.controller('Login', ['$scope', '$rootScope', '$http', '$routeParams', '$location', 'AuthService', function ($scope, $rootScope, $http, $routeParams, $location, AuthService) {
-
     $scope.email = "contact@jieverson.com";
     $scope.password = "info3000";
     $scope.remember = true;
@@ -13,6 +12,18 @@
                 $location.path("/watching");
             }, function () {
                 $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
+            });
+    };
+
+    $scope.logout = function () {        
+        AuthService
+            .logout()
+            .then(function (user) {
+                $rootScope.$broadcast(AUTH_EVENTS.logoutSuccess);
+                $scope.setCurrentUser(null);
+                $location.path("/");
+            }, function () {
+                //$rootScope.$broadcast(AUTH_EVENTS.logoutFailed);
             });
     };
 }]);

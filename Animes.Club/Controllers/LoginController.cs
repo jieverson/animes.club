@@ -15,18 +15,31 @@ namespace Animes.Club.Controllers
     public class LoginController : ApiController
     {
 
-        public bool Get()
+        public LoginSuccessDTO Get()
         {
-            var a = FormsAuthentication.FormsCookieName;
-            var b = RequestContext.Principal.Identity.Name;
-            var c = RequestContext.Principal.Identity.IsAuthenticated;
-            var d = User.Identity.Name;
-            var e = User.Identity.IsAuthenticated;
-            var f = HttpContext.Current.User.Identity.Name;
+            if (User.Identity.IsAuthenticated)
+            {
+                using (var context = new AnimesClubContext())
+                {
+                    var user = context.Users.Find(long.Parse(User.Identity.Name));
 
-            FormsAuthentication.SetAuthCookie("oi", true);
-            
-            return this.User.Identity.IsAuthenticated;
+                    return new LoginSuccessDTO
+                    {
+                        sessionId = user.id,
+                        user = new UserDTO
+                        {
+                            id = user.id,
+                            username = user.username,
+                            email = user.email,
+                            picture = user.picture
+                        }
+                    };
+                }
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public LoginSuccessDTO Post(AuthDTO data)
@@ -37,18 +50,7 @@ namespace Animes.Club.Controllers
                 var user = context.Users.FirstOrDefault(x => x.email == data.email && x.password == passwordHash);
                 if (user != null)
                 {
-                    if (data.remember)
-                    {
-                        HttpContext.Current.Response.Cookies.Clear();
-                        DateTime expiryDate = DateTime.Now.AddDays(30);
-                        FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, user.id.ToString(), DateTime.Now, expiryDate, true, String.Empty);
-                        string encryptedTicket = FormsAuthentication.Encrypt(ticket);
-                        HttpCookie authenticationCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
-                        authenticationCookie.Expires = ticket.Expiration;
-                        HttpContext.Current.Response.Cookies.Add(authenticationCookie);
-                    }
-
-                    FormsAuthentication.SetAuthCookie(user.username, data.remember);
+                    FormsAuthentication.SetAuthCookie(user.id.ToString(), data.remember);
 
                     return new LoginSuccessDTO
                     {
@@ -67,6 +69,11 @@ namespace Animes.Club.Controllers
                     return null;
                 }
             }
+        }
+
+        public void Delete()
+        {
+            FormsAuthentication.SignOut();
         }
 
     }

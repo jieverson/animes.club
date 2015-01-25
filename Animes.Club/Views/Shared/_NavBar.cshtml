@@ -12,7 +12,7 @@
         </div>
     </form>
     <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown" ng-if="currentUser">
+        <li class="dropdown" ng-if="currentUser" ng-controller="Login">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <img class="profile-image img-circle" src="http://www.gravatar.com/avatar/ee546078aeaec763c07a40d45f5465bf?s=40&d=retro" />
                 <span>voidness</span><i class="caret"></i>
@@ -21,13 +21,13 @@
                 <li><a href="/user/voidness">Profile</a></li>
                 <li><a href="#">Settings</a></li>
                 <li class="divider"></li>
-                <li><a href="http://www.google.com.br">Logout</a></li>
+                <li><a href="#" ng-click="logout()">Logout</a></li>
             </ul>
         </li>
 
         <li class="dropdown" ng-if="!currentUser">
-            <a href="/login" class="dropdown-toggle" data-toggle="dropdown">
-                <span>login</span>
+            <a href="/login">
+                <span>Login</span>
             </a>
         </li>
     </ul>
