@@ -7,7 +7,8 @@
             //controller: 'homeCtrl',
         });
 
-        $routeProvider.when("/login", { templateUrl: "/view/account/login", controller: "Login" });
+        $routeProvider.when("/login", { templateUrl: "/view/login/index", controller: "Login" });
+        $routeProvider.when("/register", { templateUrl: "/view/login/register", controller: "Login" });
         $routeProvider.when("/watching", { templateUrl: "/view/lists/watching" });
         $routeProvider.when("/completed", { templateUrl: "/view/lists/completed" });
         $routeProvider.when("/todo", { templateUrl: "/view/lists/todo" });

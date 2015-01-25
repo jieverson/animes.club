@@ -18,7 +18,7 @@ namespace Animes.Club.Migrations
         {
             context.Users.AddOrUpdate(
                 a => a.username,
-                new User { username = "xereta", password = PasswordService.GetHash("info3000"), email = "contact@jieverson.com" }
+                new User { username = "xereta", password = PasswordService.GetHash("info3000"), email = "contact@jieverson.com", picture = "http://www.gravatar.com/avatar/ee546078aeaec763c07a40d45f5465bf?s=40&d=retro" }
                 );
 
             //context.Animes.AddOrUpdate(
