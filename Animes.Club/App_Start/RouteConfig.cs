@@ -21,9 +21,15 @@ namespace Animes.Club
 
             routes.MapRoute(
                 name: "View",
-                url: "view/{controller}/{action}",
-                defaults: new { id = UrlParameter.Optional }
+                url: "view/{folder}/{file}",
+                defaults: new { controller = "View", action = "Template", id = UrlParameter.Optional }
             );
+
+            //routes.MapRoute(
+            //    name: "View",
+            //    url: "view/{controller}/{action}",
+            //    defaults: new { id = UrlParameter.Optional }
+            //);
 
             routes.MapRoute(
                 name: "Angular",

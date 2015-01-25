@@ -35,7 +35,7 @@ namespace Animes.Club.Controllers
             CloudBlobContainer container = blobClient.GetContainerReference("covers");
             DateTime expiryTime = DateTime.UtcNow.AddMinutes(2);
 
-            using (var context = new Animes.Club.Models.AnimesClubContext())
+            using (var context = new AnimesClubContext())
             {
                 return context.Animes.Where(x => x.name.ToLower().Contains(q.ToLower())).Take(5).ToList().Select(x => new SearchResultDTO
                 {
@@ -55,7 +55,7 @@ namespace Animes.Club.Controllers
             CloudBlobContainer container = blobClient.GetContainerReference("covers");
             DateTime expiryTime = DateTime.UtcNow.AddSeconds(30);
 
-            using (var context = new Animes.Club.Models.AnimesClubContext())
+            using (var context = new AnimesClubContext())
             {
                 var anime = context.Animes.Find(id);
                 anime.picture = BlobService.GetBlobSasUri(container, anime.picture, expiryTime);

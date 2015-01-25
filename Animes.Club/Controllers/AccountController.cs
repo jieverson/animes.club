@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Owin;
 using Animes.Club.Models;
+using System.Web.Security;
 
 namespace Animes.Club.Controllers
 {
@@ -58,32 +59,48 @@ namespace Animes.Club.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            return View();
+            return PartialView();
         }
 
         //
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        //[ValidateAntiForgeryToken]
+        public async Task<ActionResult> Login(/*String email, String password, bool remember*/)
         {
-            if (ModelState.IsValid)
+            using (var context = new AnimesClubContext())
             {
-                var user = await UserManager.FindAsync(model.Email, model.Password);
-                if (user != null)
-                {
-                    await SignInAsync(user, model.RememberMe);
-                    return RedirectToLocal(returnUrl);
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Invalid username or password.");
-                }
-            }
+                //var user = context.Users.FirstOrDefault(x => x.email == email);
 
-            // If we got this far, something failed, redisplay form
-            return View(model);
+                //if (user != null)
+                //{
+                //    //if (remember)
+                //    //{
+                //    //    Response.Cookies.Clear();
+                //    //    DateTime expiryDate = DateTime.Now.AddDays(30);
+                //    //    FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, user.id.ToString(), DateTime.Now, expiryDate, true, String.Empty);
+                //    //    string encryptedTicket = FormsAuthentication.Encrypt(ticket);
+                //    //    HttpCookie authenticationCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+                //    //    authenticationCookie.Expires = ticket.Expiration;
+                //    //    Response.Cookies.Add(authenticationCookie);
+                //    //}
+
+                //    FormsAuthentication.SetAuthCookie(user.id.ToString(), remember);
+
+                //    //string url = "/watching";
+                //    //if (!string.IsNullOrEmpty(returnUrl))
+                //    //{
+                //    //    url = returnUrl;
+                //    //}
+
+                //    return Json(new { success = true /*, url = url */ });
+                //}
+                //else
+                //{
+                    return Json(new { success = false });
+                //}
+            }
         }
 
         //
