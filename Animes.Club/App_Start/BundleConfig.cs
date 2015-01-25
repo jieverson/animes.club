@@ -17,13 +17,18 @@ namespace Animes.Club
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                 "~/scripts/app/app.js",
+                "~/scripts/app/controller/app.js",
                 "~/scripts/app/controller/menu.js",
                 "~/scripts/app/controller/search.js",
                 "~/scripts/app/controller/login.js",
                 "~/scripts/app/controller/user.js",
                 "~/scripts/app/controller/anime.js",
                 "~/scripts/app/controller/my-list.js",
-                "~/scripts/app/service/anime.js"
+                "~/scripts/app/service/auth.js",
+                "~/scripts/app/service/session.js",
+                "~/scripts/app/service/anime.js",
+                "~/scripts/app/enum/AUTH_EVENTS.js",
+                "~/scripts/app/enum/USER_ROLES.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(

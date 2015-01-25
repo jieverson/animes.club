@@ -237,6 +237,8 @@
     <Compile Include="Controllers\MeController.cs" />
     <Compile Include="DTOs\AuthDTO.cs" />
     <Compile Include="DTOs\SearchResultDTO.cs" />
+    <Compile Include="DTOs\LoginSuccessDTO.cs" />
+    <Compile Include="DTOs\UserDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -373,12 +375,17 @@
     <Content Include="scripts\angular.min.js" />
     <Content Include="scripts\app\app.js" />
     <Content Include="scripts\app\controller\anime.js" />
+    <Content Include="scripts\app\controller\app.js" />
     <Content Include="scripts\app\controller\login.js" />
     <Content Include="scripts\app\controller\menu.js" />
     <Content Include="scripts\app\controller\my-list.js" />
     <Content Include="scripts\app\controller\search.js" />
     <Content Include="scripts\app\controller\user.js" />
+    <Content Include="scripts\app\enum\AUTH_EVENTS.js" />
+    <Content Include="scripts\app\enum\USER_ROLES.js" />
     <Content Include="scripts\app\service\anime.js" />
+    <Content Include="scripts\app\service\auth.js" />
+    <Content Include="scripts\app\service\session.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />

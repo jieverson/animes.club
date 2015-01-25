@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using System.Web.Security;
 
@@ -21,11 +22,14 @@ namespace Animes.Club.Controllers
             var c = RequestContext.Principal.Identity.IsAuthenticated;
             var d = User.Identity.Name;
             var e = User.Identity.IsAuthenticated;
+            var f = HttpContext.Current.User.Identity.Name;
+
+            FormsAuthentication.SetAuthCookie("oi", true);
             
             return this.User.Identity.IsAuthenticated;
         }
 
-        public bool Post(AuthDTO data)
+        public LoginSuccessDTO Post(AuthDTO data)
         {
             using (var context = new AnimesClubContext())
             {
@@ -33,24 +37,34 @@ namespace Animes.Club.Controllers
                 var user = context.Users.FirstOrDefault(x => x.email == data.email && x.password == passwordHash);
                 if (user != null)
                 {
-                    //if (remember)
-                    //{
-                    //    Response.Cookies.Clear();
-                    //    DateTime expiryDate = DateTime.Now.AddDays(30);
-                    //    FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, user.id.ToString(), DateTime.Now, expiryDate, true, String.Empty);
-                    //    string encryptedTicket = FormsAuthentication.Encrypt(ticket);
-                    //    HttpCookie authenticationCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
-                    //    authenticationCookie.Expires = ticket.Expiration;
-                    //    Response.Cookies.Add(authenticationCookie);
-                    //}
+                    if (data.remember)
+                    {
+                        HttpContext.Current.Response.Cookies.Clear();
+                        DateTime expiryDate = DateTime.Now.AddDays(30);
+                        FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, user.id.ToString(), DateTime.Now, expiryDate, true, String.Empty);
+                        string encryptedTicket = FormsAuthentication.Encrypt(ticket);
+                        HttpCookie authenticationCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+                        authenticationCookie.Expires = ticket.Expiration;
+                        HttpContext.Current.Response.Cookies.Add(authenticationCookie);
+                    }
 
-                    FormsAuthentication.SetAuthCookie(user.id.ToString(), data.remember);
+                    FormsAuthentication.SetAuthCookie(user.username, data.remember);
 
-                    return true;
+                    return new LoginSuccessDTO
+                    {
+                        sessionId = user.id,
+                        user = new UserDTO
+                        {
+                            id = user.id,
+                            username = user.username,
+                            email = user.email,
+                            picture = user.picture
+                        }
+                    };
                 }
                 else
                 {
-                    return false;
+                    return null;
                 }
             }
         }

@@ -1,18 +1,18 @@
-﻿App.controller('Login', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
+﻿App.controller('Login', ['$scope', '$rootScope', '$http', '$routeParams', '$location', 'AuthService', function ($scope, $rootScope, $http, $routeParams, $location, AuthService) {
 
-    $scope.email = "";
-    $scope.password = "";
+    $scope.email = "contact@jieverson.com";
+    $scope.password = "info3000";
     $scope.remember = true;
 
     $scope.login = function () {
-        $http.post('/api/login', { email: $scope.email, password: $scope.password, remember: $scope.remember }).
-          success(function (data, status, headers, config) {
-              debugger;
-          }).
-          error(function (data, status, headers, config) {
-              alert('erro');
-              // called asynchronously if an error occurs
-              // or server returns response with an error status.
-          });
+        AuthService
+            .login($scope.email, $scope.password, $scope.remember)
+            .then(function (user) {
+                $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+                $scope.setCurrentUser(user);
+                $location.path("/watching");
+            }, function () {
+                $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
+            });
     };
 }]);
