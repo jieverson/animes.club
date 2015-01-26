@@ -1,6 +1,6 @@
 ﻿App.controller('Login', ['$scope', '$rootScope', '$http', '$routeParams', '$location', 'AuthService', function ($scope, $rootScope, $http, $routeParams, $location, AuthService) {
-    $scope.email = "contact@jieverson.com";
-    $scope.password = "info3000";
+    $scope.email = null;
+    $scope.password = null;
     $scope.remember = true;
 
     $scope.login = function () {

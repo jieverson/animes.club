@@ -1,6 +1,20 @@
 ﻿App.factory("AuthService", ["$http", "Session", function ($http, Session) {
     var authService = {};
 
+    authService.register = function (username, email, password) {
+        return $http
+          .post('/api/register', { username: username, email: email, password: password })
+          .then(function (result) {
+              if (result.data) {
+                  Session.create(result.data.sessionId, result.data.user.id);
+                  return result.data.user;
+              }
+              else {
+                  return null;
+              }
+          });
+    };
+
     authService.login = function (email, password, remember) {
         return $http
           .post('/api/login', { email: email, password: password, remember: remember })

@@ -21,6 +21,7 @@ namespace Animes.Club
                 "~/scripts/app/controller/menu.js",
                 "~/scripts/app/controller/search.js",
                 "~/scripts/app/controller/login.js",
+                "~/scripts/app/controller/register.js",
                 "~/scripts/app/controller/user.js",
                 "~/scripts/app/controller/anime.js",
                 "~/scripts/app/controller/my-list.js",
@@ -30,6 +31,8 @@ namespace Animes.Club
                 "~/scripts/app/enum/AUTH_EVENTS.js",
                 "~/scripts/app/enum/USER_ROLES.js"
                 ));
+
+            //bundles.Add(new ScriptBundle("~/bundles/app").IncludeDirectory("~/scripts/app/", "*.js", true));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                 "~/scripts/jquery-{version}.js"));
