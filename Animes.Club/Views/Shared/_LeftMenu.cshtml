@@ -3,12 +3,16 @@
         <li ng-repeat="item in items">
             <span ng-hide="item.show" class="text-muted">{{item.group}}</span>
 
-            <h5 ng-hide="item.group" ng-class="{ 'text-danger': item.selected() }">
+            <h5 ng-hide="item.group" ng-class="{ 'text-danger': item.selected() }" ng-if="!item.auth || currentUser">
                 <a href="{{item.url}}" ng-hide="item.selected()"><i ng-show="item.icon" class="fa {{item.icon}}"></i>{{item.text}}</a>
                 <span ng-show="item.selected()"><i ng-show="item.icon" class="fa {{item.icon}}"></i>{{item.text}}</span>
                 <span ng-show="item.badge" class="badge alert-danger">{{item.badge}}</span>
                 <small ng-show="item.hint" class="text-muted">{{item.hint}}</small>
             </h5>
         </li>
-    </ul>
+
+        <li ng-if="!currentUser">
+            <a href="/login"><i class="fa fa-user"></i>login</a>
+        </li>
+</ul>
 </nav>

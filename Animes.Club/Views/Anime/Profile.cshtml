@@ -25,13 +25,12 @@
 
             <form role="form" class="form-horizontal" ng-if="currentUser">
                 <div class="col-md-6">
-                    <select id="state" class="form-control input-lg">
+                    <select id="state" class="form-control input-lg" ng-model="anime.status" ng-change="save()">
                         <option value="0">Not Watched Yet</option>
                         <option value="1">Current Watching</option>
                         <option value="2">Completed</option>
                         <option value="3">Plan to Watch</option>
                         <option value="4">Droped</option>
-                        <option value="5">Don't Wanna See!</option>
                     </select>
                 </div>
             </form>

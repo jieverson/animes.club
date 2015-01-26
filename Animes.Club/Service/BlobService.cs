@@ -1,4 +1,6 @@
-﻿using Microsoft.WindowsAzure.Storage.Blob;
+﻿using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +11,31 @@ namespace Animes.Club.Service
     public static class BlobService
     {
 
+        public static CloudBlobContainer GetCoversContainer()
+        {
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
+            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+            CloudBlobContainer container = blobClient.GetContainerReference("covers");
+            return container;
+        }
+
         public static string GetBlobSasUri(CloudBlobContainer container, String file_name, DateTime expiryTime)
         {
-            var blob = container.GetBlockBlobReference(file_name);
-            SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy();
-            sasConstraints.SharedAccessExpiryTime = expiryTime;
-            sasConstraints.Permissions = SharedAccessBlobPermissions.Read;
+            if (!String.IsNullOrEmpty(file_name))
+            {
+                var blob = container.GetBlockBlobReference(file_name);
+                SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy();
+                sasConstraints.SharedAccessExpiryTime = expiryTime;
+                sasConstraints.Permissions = SharedAccessBlobPermissions.Read;
 
-            string sasContainerToken = blob.GetSharedAccessSignature(sasConstraints);
+                string sasContainerToken = blob.GetSharedAccessSignature(sasConstraints);
 
-            return blob.Uri + sasContainerToken;
+                return blob.Uri + sasContainerToken;
+            }
+            else
+            {
+                return String.Empty;
+            }
         }
 
     }

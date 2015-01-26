@@ -38,7 +38,7 @@ namespace Animes.Club.Controllers
             }
             else
             {
-                return null;
+                throw new HttpResponseException(HttpStatusCode.Forbidden);
             }
         }
 

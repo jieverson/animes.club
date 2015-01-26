@@ -30,9 +30,7 @@ namespace Animes.Club.Controllers
         [OutputCache(Duration = 1 * 60)]
         public IEnumerable<SearchResultDTO> Get(String q)
         {
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
-            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-            CloudBlobContainer container = blobClient.GetContainerReference("covers");
+            CloudBlobContainer container = BlobService.GetCoversContainer();
             DateTime expiryTime = DateTime.UtcNow.AddMinutes(2);
 
             using (var context = new AnimesClubContext())
@@ -44,22 +42,6 @@ namespace Animes.Club.Controllers
                     address = Regex.Replace(x.name, @"[^0-9a-zA-Z\._]", "_"),
                     picture = BlobService.GetBlobSasUri(container, x.picture, expiryTime)
                 });
-            }
-        }
-
-        // GET: api/Anime/5
-        public Anime Get(long id)
-        {
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
-            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-            CloudBlobContainer container = blobClient.GetContainerReference("covers");
-            DateTime expiryTime = DateTime.UtcNow.AddSeconds(30);
-
-            using (var context = new AnimesClubContext())
-            {
-                var anime = context.Animes.Find(id);
-                anime.picture = BlobService.GetBlobSasUri(container, anime.picture, expiryTime);
-                return anime;
             }
         }
 

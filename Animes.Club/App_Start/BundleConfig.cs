@@ -13,26 +13,25 @@ namespace Animes.Club
                  "~/css/bootstrap/bootstrap.css",
                  "~/css/font-awesome.css",
                  "~/css/alertify.core.css",
-                 //"~/css/alertify.bootstrap.css",
                  "~/css/alertify.default.css",
                  "~/css/animes.club.css"
                  ));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
-                "~/scripts/app/app.js",
-                "~/scripts/app/controller/app.js",
-                "~/scripts/app/controller/menu.js",
-                "~/scripts/app/controller/search.js",
-                "~/scripts/app/controller/login.js",
-                "~/scripts/app/controller/register.js",
-                "~/scripts/app/controller/user.js",
-                "~/scripts/app/controller/anime.js",
-                "~/scripts/app/controller/my-list.js",
-                "~/scripts/app/service/auth.js",
-                "~/scripts/app/service/session.js",
-                "~/scripts/app/service/anime.js",
-                "~/scripts/app/enum/AUTH_EVENTS.js",
-                "~/scripts/app/enum/USER_ROLES.js"
+                "~/app/app.js",
+                "~/app/controller/app.js",
+                "~/app/controller/menu.js",
+                "~/app/controller/search.js",
+                "~/app/controller/login.js",
+                "~/app/controller/register.js",
+                "~/app/controller/user.js",
+                "~/app/controller/anime.js",
+                "~/app/controller/my-list.js",
+                "~/app/service/auth.js",
+                "~/app/service/session.js",
+                "~/app/service/anime.js",
+                "~/app/enum/AUTH_EVENTS.js",
+                "~/app/enum/USER_ROLES.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
