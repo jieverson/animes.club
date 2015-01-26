@@ -4,7 +4,7 @@
     <div class="row-fluid" ng-controller="MyLists">
         <div class="col-sm-6 col-md-4" ng-repeat="item in watching">
             <div class="thumbnail">
-                <img src="{{item.picture}}" alt="{{item.name}}" class="pull-left">
+                <img ng-src="{{item.picture}}" class="pull-left">
                 <div class="caption">
                     <h4 style=""><a href="/anime/{{item.id}}/{{item.name.split(' ').join('_')}}">{{item.name}}</a></h4>
                     <p>

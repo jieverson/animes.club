@@ -1,9 +1,9 @@
 ﻿App.factory("AuthService", ["$http", "Session", function ($http, Session) {
     var authService = {};
 
-    authService.register = function (username, email, password) {
+    authService.register = function (username, email, password, captchaResponse) {
         return $http
-          .post('/api/register', { username: username, email: email, password: password })
+          .post('/api/register', { username: username, email: email, password: password, captchaResponse: captchaResponse })
           .then(function (result) {
               if (result.data) {
                   Session.create(result.data.sessionId, result.data.user.id);
@@ -15,9 +15,9 @@
           });
     };
 
-    authService.login = function (email, password, remember) {
+    authService.login = function (username, password, remember) {
         return $http
-          .post('/api/login', { email: email, password: password, remember: remember })
+          .post('/api/login', { username: username, password: password, remember: remember })
           .then(function (result) {
               if (result.data) {
                   Session.create(result.data.sessionId, result.data.user.id);

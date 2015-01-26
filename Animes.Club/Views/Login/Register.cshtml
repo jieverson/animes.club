@@ -9,11 +9,17 @@
             <input type="email" required class="form-control" placeholder="email" ng-model="email">
         </div>
         <div class="form-group">
-            <input type="email" required class="form-control" placeholder="confirm email" ng-model="confirmEmail">
-        </div>
-        <div class="form-group">
             <input type="password" required class="form-control" placeholder="password" ng-model="password">
         </div>
-        <button type="submit" class="btn btn-primary">Register</button>
+
+        <div style="margin-bottom:10px;" class="g-recaptcha" data-sitekey="6LfS_QATAAAAALgrnYO5_58e4u8q0pg4VLbm0a-5"></div>
+
+        <div class="checkbox">
+            <label><input type="checkbox" ng-model="agree">I agree with the <a href="/terms"><u>terms</u></a>.</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary" ng-disabled="!(username && email && password && agree)">Register</button>
     </form>
 </div>
+
+<script src='https://www.google.com/recaptcha/api.js' async defer></script>

@@ -12,6 +12,9 @@ namespace Animes.Club
             bundles.Add(new StyleBundle("~/Content/css").Include(
                  "~/css/bootstrap/bootstrap.css",
                  "~/css/font-awesome.css",
+                 "~/css/alertify.core.css",
+                 //"~/css/alertify.bootstrap.css",
+                 "~/css/alertify.default.css",
                  "~/css/animes.club.css"
                  ));
 
@@ -32,8 +35,6 @@ namespace Animes.Club
                 "~/scripts/app/enum/USER_ROLES.js"
                 ));
 
-            //bundles.Add(new ScriptBundle("~/bundles/app").IncludeDirectory("~/scripts/app/", "*.js", true));
-
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                 "~/scripts/jquery-{version}.js"));
 
@@ -50,7 +51,8 @@ namespace Animes.Club
 
             bundles.Add(new ScriptBundle("~/bundles/components").Include(
                 "~/scripts/typeahead.bundle.js",
-                "~/scripts/handlebars-v2.0.0.js"
+                "~/scripts/handlebars-v2.0.0.js",
+                "~/scripts/alertify.js"
                 ));
 
             //bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(

@@ -1,16 +1,22 @@
 ﻿<div style="width:400px;">
     <h1>Login</h1>
-
+    
     <form role="form" ng-submit="login()">
         <div class="form-group">
-            <input type="email" required class="form-control" placeholder="email" ng-model="email">
+            <input type="text" required class="form-control" placeholder="username" ng-model="username">
         </div>
         <div class="form-group">
             <input type="password" required class="form-control" placeholder="password" ng-model="password">
         </div>
+
+        <div class="alert alert-info" role="alert">
+            <span>if you are not registered, <a href="/register" class="alert-link">join us</a></span>
+        </div>
+
         <div class="checkbox">
             <label><input type="checkbox" ng-model="remember">remember me</label>
         </div>
+
         <button type="submit" class="btn btn-primary">Login</button>
     </form>
 </div>

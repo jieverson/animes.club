@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Security;
 
@@ -14,29 +15,35 @@ namespace Animes.Club.Controllers
     public class RegisterController : ApiController
     {
 
-        public LoginSuccessDTO Post(RegisterDTO data)
+        public async Task<LoginSuccessDTO> Post(RegisterDTO data)
         {
-            using (var context = new AnimesClubContext())
+            if (await CaptchaService.Check(data.captchaResponse))
             {
-                var user = UserService.Create(data);
-                context.Users.Add(user);
-                context.SaveChanges();
-
-                FormsAuthentication.SetAuthCookie(user.id.ToString(), false);
-
-                return new LoginSuccessDTO
+                using (var context = new AnimesClubContext())
                 {
-                    sessionId = user.id,
-                    user = new UserDTO
+                    var user = UserService.Create(data);
+                    context.Users.Add(user);
+                    context.SaveChanges();
+
+                    FormsAuthentication.SetAuthCookie(user.id.ToString(), false);
+
+                    return new LoginSuccessDTO
                     {
-                        id = user.id,
-                        username = user.username,
-                        email = user.email,
-                        picture = user.picture
-                    }
-                };
+                        sessionId = user.id,
+                        user = new UserDTO
+                        {
+                            id = user.id,
+                            username = user.username,
+                            email = user.email,
+                            picture = user.picture
+                        }
+                    };
+                }
+            }
+            else
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
             }
         }
-
     }
 }

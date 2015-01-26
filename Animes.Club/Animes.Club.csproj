@@ -279,6 +279,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Service\BlobService.cs" />
+    <Compile Include="Service\CaptchaService.cs" />
     <Compile Include="Service\GravatarService.cs" />
     <Compile Include="Service\PasswordService.cs" />
     <Compile Include="Service\UserService.cs" />
@@ -286,6 +287,9 @@
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
+    <Content Include="css\alertify.bootstrap.css" />
+    <Content Include="css\alertify.core.css" />
+    <Content Include="css\alertify.default.css" />
     <Content Include="css\animes.club.bootstrap.css">
       <DependentUpon>animes.club.bootstrap.less</DependentUpon>
     </Content>
@@ -337,6 +341,7 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="scripts\alertify.js" />
     <Content Include="scripts\angular-animate.js" />
     <Content Include="scripts\angular-animate.min.js" />
     <Content Include="scripts\angular-aria.js" />

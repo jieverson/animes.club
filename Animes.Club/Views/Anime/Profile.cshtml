@@ -19,10 +19,14 @@
 
             <p class="col-md-12 text-justify" ng-bind="anime.description"></p>
 
-            <form role="form" class="form-horizontal">
+            <div ng-if="!currentUser" class="alert alert-info col-md-12" role="alert">
+                <span>To add animes to your list you need to <a href="/register" class="alert-link">join us</a> or <a href="/login" class="alert-link">login</a></span>
+            </div>
+
+            <form role="form" class="form-horizontal" ng-if="currentUser">
                 <div class="col-md-6">
                     <select id="state" class="form-control input-lg">
-                        <option value="0"><span class="fa fa-question-circle"></span> Not Watched Yet</option>
+                        <option value="0">Not Watched Yet</option>
                         <option value="1">Current Watching</option>
                         <option value="2">Completed</option>
                         <option value="3">Plan to Watch</option>

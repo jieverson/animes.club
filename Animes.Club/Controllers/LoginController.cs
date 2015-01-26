@@ -47,7 +47,7 @@ namespace Animes.Club.Controllers
             using (var context = new AnimesClubContext())
             {
                 var passwordHash = PasswordService.GetHash(data.password);
-                var user = context.Users.FirstOrDefault(x => x.email == data.email && x.password == passwordHash);
+                var user = context.Users.FirstOrDefault(x => x.username == data.username && x.password == passwordHash);
                 if (user != null)
                 {
                     FormsAuthentication.SetAuthCookie(user.id.ToString(), data.remember);
@@ -66,7 +66,7 @@ namespace Animes.Club.Controllers
                 }
                 else
                 {
-                    return null;
+                    throw new HttpResponseException(HttpStatusCode.Forbidden);
                 }
             }
         }
@@ -75,6 +75,5 @@ namespace Animes.Club.Controllers
         {
             FormsAuthentication.SignOut();
         }
-
     }
 }

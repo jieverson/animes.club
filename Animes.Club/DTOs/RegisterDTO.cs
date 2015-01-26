@@ -14,5 +14,7 @@ namespace Animes.Club.DTOs
 
         public string password { get; set; }
 
+        public string captchaResponse { get; set; }
+
     }
 }
