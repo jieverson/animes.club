@@ -19,7 +19,7 @@
         templates: {
             empty: [
               '<div class="empty-message">',
-              'unable to find any Best Picture winners that match the current query',
+              'What? =(',
               '</div>'
             ].join('\n'),
             suggestion: Handlebars.compile([

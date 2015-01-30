@@ -9,12 +9,9 @@
             <h1 class="col-md-12" ng-bind="anime.name"></h1>
 
             <p class="col-md-12">
-                <span class="label label-default">Shounen</span>
-                <span class="label label-info">Magic</span>
-                <span class="label label-danger">Action</span>
-                <span class="label label-primary">Fantasy</span>
-                <span class="label label-warning">Comedy</span>
-                <span class="label label-success">Adventure</span>
+                <span ng-repeat="tag in anime.tags">
+                    <span class="label label-default" ng-style="tag.style" ng-init="tag.style = { 'background-color': tag.color }">{{tag.value}}</span>
+                </span>
             </p>
 
             <p class="col-md-12 text-justify" ng-bind="anime.description"></p>
@@ -34,6 +31,10 @@
                     </select>
                 </div>
             </form>
+
+            <div class="col-md-12" ng-if="anime.status != 0">
+                <rating class="rating" ng-model="anime.rating" ng-click="save()"></rating>
+            </div>
 
         </div>
     </div>

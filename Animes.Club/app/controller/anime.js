@@ -4,7 +4,7 @@
     
     $scope.save = function () {
         return $http
-          .post('/api/animelist', { id: $scope.id, status: $scope.anime.status })
+          .post('/api/animelist', { id: $scope.id, status: $scope.anime.status, rating: $scope.anime.rating })
           .then(function (result) {
               alertify.success("Saved");
           });

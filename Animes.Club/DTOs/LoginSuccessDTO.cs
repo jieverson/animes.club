@@ -12,5 +12,7 @@ namespace Animes.Club.DTOs
 
         public UserDTO user { get; set; }
 
+        public String message { get; set; }
+
     }
 }

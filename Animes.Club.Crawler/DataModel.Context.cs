@@ -27,5 +27,7 @@ namespace Animes.Club.Crawler
     
         public virtual DbSet<anidb> anidb { get; set; }
         public virtual DbSet<Animes> Animes { get; set; }
+        public virtual DbSet<Tags> Tags { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
     }
 }

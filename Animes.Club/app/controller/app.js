@@ -1,4 +1,4 @@
-﻿App.controller('App', ['$scope', '$rootScope', '$location', 'AuthService', function ($scope, $rootScope, $location, AuthService) {
+﻿App.controller('App', ['$scope', 'AuthService', function ($scope, AuthService) {
     $scope.currentUser = null;
 
     $scope.setCurrentUser = function (user) {
@@ -8,10 +8,6 @@
     AuthService
         .checkAuthenticate()
         .then(function (user) {
-            $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
             $scope.setCurrentUser(user);
-            $location.path("/watching");
-        }, function () {
-            $rootScope.$broadcast(AUTH_EVENTS.sessionTimeout);
         });
 }]);

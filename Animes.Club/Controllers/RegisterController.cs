@@ -15,6 +15,7 @@ namespace Animes.Club.Controllers
     public class RegisterController : ApiController
     {
 
+        // POST: api/Register
         public async Task<LoginSuccessDTO> Post(RegisterDTO data)
         {
             if (await CaptchaService.Check(data.captchaResponse))
@@ -32,7 +33,6 @@ namespace Animes.Club.Controllers
                         sessionId = user.id,
                         user = new UserDTO
                         {
-                            id = user.id,
                             username = user.username,
                             email = user.email,
                             picture = user.picture

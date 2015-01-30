@@ -1,12 +1,26 @@
-﻿App.controller('MyLists', ['$scope', '$http', '$route', 'AnimeService', function ($scope, $http, $route, AnimeService) {
-    $http.get('/api/animelist?status=' + $route.current.status).
+﻿App.controller('MyLists', ['$scope', '$http', '$route', function ($scope, $http, $route) {
+    var status = $route.current.status;
+
+    $http.get('/api/animelist?status=' + status).
       success(function (data, status, headers, config) {
-          $scope.watching = data;
-      }).
-      error(function (data, status, headers, config) {
-          // called asynchronously if an error occurs
-          // or server returns response with an error status.
+          $scope.list = data;
       });
 
-    //$scope.watching = AnimeService.all();
+    var title;
+    switch (status) {
+        case 1:
+            title = "Current Watching";
+            break;
+        case 2:
+            title = "Completed";
+            break;
+        case 3:
+            title = "Plan to Watch";
+            break;
+        case 4:
+            title = "Dropped";
+            break;
+    }
+    
+    $scope.title = title;
 }]);

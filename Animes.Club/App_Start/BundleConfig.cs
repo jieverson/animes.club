@@ -22,16 +22,13 @@ namespace Animes.Club
                 "~/app/controller/app.js",
                 "~/app/controller/menu.js",
                 "~/app/controller/search.js",
+                "~/app/controller/trending.js",
                 "~/app/controller/login.js",
                 "~/app/controller/register.js",
                 "~/app/controller/user.js",
                 "~/app/controller/anime.js",
                 "~/app/controller/my-list.js",
-                "~/app/service/auth.js",
-                "~/app/service/session.js",
-                "~/app/service/anime.js",
-                "~/app/enum/AUTH_EVENTS.js",
-                "~/app/enum/USER_ROLES.js"
+                "~/app/service/auth.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
@@ -51,7 +48,9 @@ namespace Animes.Club
             bundles.Add(new ScriptBundle("~/bundles/components").Include(
                 "~/scripts/typeahead.bundle.js",
                 "~/scripts/handlebars-v2.0.0.js",
-                "~/scripts/alertify.js"
+                "~/scripts/alertify.js",
+                "~/scripts/ui-bootstrap-custom-0.12.0.js",
+                "~/scripts/ui-bootstrap-custom-tpls-0.12.0.js"
                 ));
 
             //bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(

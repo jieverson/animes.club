@@ -194,6 +194,8 @@
     <Compile Include="Controllers\AnimeListController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\TrendingController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ViewController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -202,6 +204,7 @@
     <Compile Include="DTOs\RegisterDTO.cs" />
     <Compile Include="DTOs\SearchResultDTO.cs" />
     <Compile Include="DTOs\LoginSuccessDTO.cs" />
+    <Compile Include="DTOs\TagDTO.cs" />
     <Compile Include="DTOs\UserDTO.cs" />
     <Compile Include="Enum\AnimeStatus.cs" />
     <Compile Include="Global.asax.cs">
@@ -243,15 +246,21 @@
     <Compile Include="Migrations\201501240817280_anime rating.Designer.cs">
       <DependentUpon>201501240817280_anime rating.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501270219157_tags.cs" />
+    <Compile Include="Migrations\201501270219157_tags.Designer.cs">
+      <DependentUpon>201501270219157_tags.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501300253002_anime list data structure change.cs" />
+    <Compile Include="Migrations\201501300253002_anime list data structure change.Designer.cs">
+      <DependentUpon>201501300253002_anime list data structure change.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Anime.cs" />
-    <Compile Include="Models\AnimeInList.cs" />
+    <Compile Include="Models\AnimeList.cs" />
     <Compile Include="Models\AnimesClubContext.cs" />
-    <Compile Include="Models\Completed.cs" />
-    <Compile Include="Models\Dropped.cs" />
-    <Compile Include="Models\Todo.cs" />
+    <Compile Include="Models\AnimeTag.cs" />
+    <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Models\Watching.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Service\BlobService.cs" />
@@ -261,6 +270,7 @@
     <Compile Include="Service\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\controller\trending.js" />
     <Content Include="css\alertify.core.css" />
     <Content Include="css\alertify.default.css" />
     <Content Include="css\animes.club.bootstrap.css">
@@ -347,11 +357,7 @@
     <Content Include="app\controller\register.js" />
     <Content Include="app\controller\search.js" />
     <Content Include="app\controller\user.js" />
-    <Content Include="app\enum\AUTH_EVENTS.js" />
-    <Content Include="app\enum\USER_ROLES.js" />
-    <Content Include="app\service\anime.js" />
     <Content Include="app\service\auth.js" />
-    <Content Include="app\service\session.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="css\animes.club.less" />
@@ -1213,10 +1219,13 @@
     <Content Include="scripts\sammy-0.7.4.js" />
     <Content Include="scripts\sammy-0.7.4.min.js" />
     <Content Include="scripts\typeahead.bundle.js" />
+    <Content Include="scripts\ui-bootstrap-custom-0.12.0.js" />
+    <Content Include="scripts\ui-bootstrap-custom-tpls-0.12.0.js" />
     <Content Include="scripts\_references.js" />
     <Content Include="sql\anidb_import.sql" />
     <Content Include="sql\create_anidb.sql" />
     <Content Include="sql\import_from_anidb.sql" />
+    <Content Include="sql\top_tags_view.sql" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
@@ -1243,6 +1252,7 @@
     <Content Include="Views\Anime\List.cshtml" />
     <Content Include="Views\Anime\Trending.cshtml" />
     <Content Include="Views\Login\Terms.cshtml" />
+    <Content Include="Views\User\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1281,6 +1291,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501240817280_anime rating.resx">
       <DependentUpon>201501240817280_anime rating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501270219157_tags.resx">
+      <DependentUpon>201501270219157_tags.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501300253002_anime list data structure change.resx">
+      <DependentUpon>201501300253002_anime list data structure change.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

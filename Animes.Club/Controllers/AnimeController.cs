@@ -27,6 +27,7 @@ namespace Animes.Club.Controllers
                 CloudBlobContainer container = BlobService.GetCoversContainer();
                 DateTime expiryTime = DateTime.UtcNow.AddSeconds(30);
                 String coverSasUri = BlobService.GetBlobSasUri(container, anime.picture, expiryTime);
+                var tags = anime.tags.Select(x => new TagDTO { value = x.tag.value, color = x.tag.color }).ToList();
 
                 var result = new AnimeDTO
                 {
@@ -34,28 +35,18 @@ namespace Animes.Club.Controllers
                     name = anime.name,
                     description = anime.description,
                     picture = coverSasUri,
-                    rating = anime.rating
+                    tags = tags
                 };
 
                 if (User.Identity.IsAuthenticated)
                 {
                     var user = context.Users.Find(long.Parse(User.Identity.Name));
 
-                    if (user.watching.Any(x => x.animeId == anime.id))
+                    var review = user.animeList.FirstOrDefault(x => x.animeId == anime.id);
+                    if (review != null)
                     {
-                        result.status = AnimeStatus.Watching;
-                    }
-                    else if (user.completed.Any(x => x.animeId == anime.id))
-                    {
-                        result.status = AnimeStatus.Completed;
-                    }
-                    else if (user.todo.Any(x => x.animeId == anime.id))
-                    {
-                        result.status = AnimeStatus.Todo;
-                    }
-                    else if (user.dropped.Any(x => x.animeId == anime.id))
-                    {
-                        result.status = AnimeStatus.Dropped;
+                        result.status = review.status;
+                        result.rating = review.rating;
                     }
                 }
 

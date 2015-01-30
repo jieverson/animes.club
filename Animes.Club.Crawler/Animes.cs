@@ -14,8 +14,25 @@ namespace Animes.Club.Crawler
     
     public partial class Animes
     {
+        public Animes()
+        {
+            this.Tags = new HashSet<Tags>();
+            this.Users = new HashSet<Users>();
+            this.Users1 = new HashSet<Users>();
+            this.Users2 = new HashSet<Users>();
+            this.Users3 = new HashSet<Users>();
+        }
+    
         public long id { get; set; }
         public string name { get; set; }
         public string picture { get; set; }
+        public string description { get; set; }
+        public Nullable<float> rating { get; set; }
+    
+        public virtual ICollection<Tags> Tags { get; set; }
+        public virtual ICollection<Users> Users { get; set; }
+        public virtual ICollection<Users> Users1 { get; set; }
+        public virtual ICollection<Users> Users2 { get; set; }
+        public virtual ICollection<Users> Users3 { get; set; }
     }
 }

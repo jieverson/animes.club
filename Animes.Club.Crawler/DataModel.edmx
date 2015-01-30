@@ -32,12 +32,259 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="picture" Type="nvarchar(max)" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="rating" Type="real" />
+        </EntityType>
+        <EntityType Name="AnimeTags">
+          <Key>
+            <PropertyRef Name="animeId" />
+            <PropertyRef Name="tagId" />
+          </Key>
+          <Property Name="animeId" Type="bigint" Nullable="false" />
+          <Property Name="tagId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Completed">
+          <Key>
+            <PropertyRef Name="userId" />
+            <PropertyRef Name="animeId" />
+          </Key>
+          <Property Name="userId" Type="bigint" Nullable="false" />
+          <Property Name="animeId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dropped">
+          <Key>
+            <PropertyRef Name="userId" />
+            <PropertyRef Name="animeId" />
+          </Key>
+          <Property Name="userId" Type="bigint" Nullable="false" />
+          <Property Name="animeId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tags">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="value" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="color" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Todo">
+          <Key>
+            <PropertyRef Name="userId" />
+            <PropertyRef Name="animeId" />
+          </Key>
+          <Property Name="userId" Type="bigint" Nullable="false" />
+          <Property Name="animeId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar(max)" Nullable="false" />
           <Property Name="picture" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="Watching">
+          <Key>
+            <PropertyRef Name="userId" />
+            <PropertyRef Name="animeId" />
+          </Key>
+          <Property Name="userId" Type="bigint" Nullable="false" />
+          <Property Name="animeId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_AnimeTags_dbo_Animes_animeId">
+          <End Role="Animes" Type="Self.Animes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AnimeTags" Type="Self.AnimeTags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AnimeTags">
+              <PropertyRef Name="animeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AnimeTags_dbo_Tags_tagId">
+          <End Role="Tags" Type="Self.Tags" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AnimeTags" Type="Self.AnimeTags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tags">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AnimeTags">
+              <PropertyRef Name="tagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Completeds_dbo_Animes_animeId">
+          <End Role="Animes" Type="Self.Animes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Completed" Type="Self.Completed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Completed">
+              <PropertyRef Name="animeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Completeds_dbo_Users_userId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Completed" Type="Self.Completed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Completed">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Droppeds_dbo_Animes_animeId">
+          <End Role="Animes" Type="Self.Animes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Dropped" Type="Self.Dropped" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Dropped">
+              <PropertyRef Name="animeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Droppeds_dbo_Users_userId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Dropped" Type="Self.Dropped" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Dropped">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Todoes_dbo_Animes_animeId">
+          <End Role="Animes" Type="Self.Animes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Todo" Type="Self.Todo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Todo">
+              <PropertyRef Name="animeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Todoes_dbo_Users_userId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Todo" Type="Self.Todo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Todo">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Watchings_dbo_Animes_animeId">
+          <End Role="Animes" Type="Self.Animes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Watching" Type="Self.Watching" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Watching">
+              <PropertyRef Name="animeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Watchings_dbo_Users_userId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Watching" Type="Self.Watching" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Watching">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="anidb" EntityType="Self.anidb" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Animes" EntityType="Self.Animes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AnimeTags" EntityType="Self.AnimeTags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Completed" EntityType="Self.Completed" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dropped" EntityType="Self.Dropped" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Todo" EntityType="Self.Todo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Watching" EntityType="Self.Watching" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_AnimeTags_dbo_Animes_animeId" Association="Self.FK_dbo_AnimeTags_dbo_Animes_animeId">
+            <End Role="Animes" EntitySet="Animes" />
+            <End Role="AnimeTags" EntitySet="AnimeTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AnimeTags_dbo_Tags_tagId" Association="Self.FK_dbo_AnimeTags_dbo_Tags_tagId">
+            <End Role="Tags" EntitySet="Tags" />
+            <End Role="AnimeTags" EntitySet="AnimeTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Completeds_dbo_Animes_animeId" Association="Self.FK_dbo_Completeds_dbo_Animes_animeId">
+            <End Role="Animes" EntitySet="Animes" />
+            <End Role="Completed" EntitySet="Completed" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Completeds_dbo_Users_userId" Association="Self.FK_dbo_Completeds_dbo_Users_userId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Completed" EntitySet="Completed" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Droppeds_dbo_Animes_animeId" Association="Self.FK_dbo_Droppeds_dbo_Animes_animeId">
+            <End Role="Animes" EntitySet="Animes" />
+            <End Role="Dropped" EntitySet="Dropped" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Droppeds_dbo_Users_userId" Association="Self.FK_dbo_Droppeds_dbo_Users_userId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Dropped" EntitySet="Dropped" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Todoes_dbo_Animes_animeId" Association="Self.FK_dbo_Todoes_dbo_Animes_animeId">
+            <End Role="Animes" EntitySet="Animes" />
+            <End Role="Todo" EntitySet="Todo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Todoes_dbo_Users_userId" Association="Self.FK_dbo_Todoes_dbo_Users_userId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Todo" EntitySet="Todo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Watchings_dbo_Animes_animeId" Association="Self.FK_dbo_Watchings_dbo_Animes_animeId">
+            <End Role="Animes" EntitySet="Animes" />
+            <End Role="Watching" EntitySet="Watching" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Watchings_dbo_Users_userId" Association="Self.FK_dbo_Watchings_dbo_Users_userId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Watching" EntitySet="Watching" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -71,12 +318,84 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="rating" Type="Single" />
+          <NavigationProperty Name="Tags" Relationship="Self.AnimeTags" FromRole="Animes" ToRole="Tags" />
+          <NavigationProperty Name="Users" Relationship="Self.Completed" FromRole="Animes" ToRole="Users" />
+          <NavigationProperty Name="Users1" Relationship="Self.Dropped" FromRole="Animes" ToRole="Users" />
+          <NavigationProperty Name="Users2" Relationship="Self.Todo" FromRole="Animes" ToRole="Users" />
+          <NavigationProperty Name="Users3" Relationship="Self.Watching" FromRole="Animes" ToRole="Users" />
         </EntityType>
+        <EntityType Name="Tags">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="color" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Animes" Relationship="Self.AnimeTags" FromRole="Tags" ToRole="Animes" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Animes" Relationship="Self.Completed" FromRole="Users" ToRole="Animes" />
+          <NavigationProperty Name="Animes1" Relationship="Self.Dropped" FromRole="Users" ToRole="Animes" />
+          <NavigationProperty Name="Animes2" Relationship="Self.Todo" FromRole="Users" ToRole="Animes" />
+          <NavigationProperty Name="Animes3" Relationship="Self.Watching" FromRole="Users" ToRole="Animes" />
+        </EntityType>
+        <Association Name="AnimeTags">
+          <End Role="Animes" Type="Self.Animes" Multiplicity="*" />
+          <End Role="Tags" Type="Self.Tags" Multiplicity="*" />
+        </Association>
+        <Association Name="Completed">
+          <End Role="Animes" Type="Self.Animes" Multiplicity="*" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+        </Association>
+        <Association Name="Dropped">
+          <End Role="Animes" Type="Self.Animes" Multiplicity="*" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+        </Association>
+        <Association Name="Todo">
+          <End Role="Animes" Type="Self.Animes" Multiplicity="*" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+        </Association>
+        <Association Name="Watching">
+          <End Role="Animes" Type="Self.Animes" Multiplicity="*" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+        </Association>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="anidb" EntityType="Self.anidb" />
           <EntitySet Name="Animes" EntityType="Self.Animes" />
+          <EntitySet Name="Tags" EntityType="Self.Tags" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="AnimeTags" Association="Self.AnimeTags">
+            <End Role="Animes" EntitySet="Animes" />
+            <End Role="Tags" EntitySet="Tags" />
+          </AssociationSet>
+          <AssociationSet Name="Completed" Association="Self.Completed">
+            <End Role="Animes" EntitySet="Animes" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="Dropped" Association="Self.Dropped">
+            <End Role="Animes" EntitySet="Animes" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="Todo" Association="Self.Todo">
+            <End Role="Animes" EntitySet="Animes" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="Watching" Association="Self.Watching">
+            <End Role="Animes" EntitySet="Animes" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -113,9 +432,71 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Tags">
+            <EntityTypeMapping TypeName="Model.Tags">
+              <MappingFragment StoreEntitySet="Tags">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="color" ColumnName="color" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Model.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="picture" ColumnName="picture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AnimeTags" TypeName="Model.AnimeTags" StoreEntitySet="AnimeTags">
+            <EndProperty Name="Animes">
+              <ScalarProperty Name="id" ColumnName="animeId" />
+            </EndProperty>
+            <EndProperty Name="Tags">
+              <ScalarProperty Name="id" ColumnName="tagId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Completed" TypeName="Model.Completed" StoreEntitySet="Completed">
+            <EndProperty Name="Animes">
+              <ScalarProperty Name="id" ColumnName="animeId" />
+            </EndProperty>
+            <EndProperty Name="Users">
+              <ScalarProperty Name="id" ColumnName="userId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Dropped" TypeName="Model.Dropped" StoreEntitySet="Dropped">
+            <EndProperty Name="Animes">
+              <ScalarProperty Name="id" ColumnName="animeId" />
+            </EndProperty>
+            <EndProperty Name="Users">
+              <ScalarProperty Name="id" ColumnName="userId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Todo" TypeName="Model.Todo" StoreEntitySet="Todo">
+            <EndProperty Name="Animes">
+              <ScalarProperty Name="id" ColumnName="animeId" />
+            </EndProperty>
+            <EndProperty Name="Users">
+              <ScalarProperty Name="id" ColumnName="userId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Watching" TypeName="Model.Watching" StoreEntitySet="Watching">
+            <EndProperty Name="Animes">
+              <ScalarProperty Name="id" ColumnName="animeId" />
+            </EndProperty>
+            <EndProperty Name="Users">
+              <ScalarProperty Name="id" ColumnName="userId" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

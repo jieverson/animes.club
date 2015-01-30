@@ -15,31 +15,15 @@ namespace Animes.Club.Controllers
     public class AnimeListController : ApiController
     {
 
+        // GET: api/AnimeList/watching
         public IEnumerable<AnimeDTO> Get(AnimeStatus status)
         {
             using (var context = new AnimesClubContext())
             {
                 var user = context.Users.Find(long.Parse(User.Identity.Name));
                 
-                IEnumerable<AnimeInList> list = null;
-                switch (status)
-                {
-                    case AnimeStatus.Watching:
-                        list = user.watching;
-                        break;
-                    case AnimeStatus.Completed:
-                        list = user.completed;
-                        break;
-                    case AnimeStatus.Todo:
-                        list = user.todo;
-                        break;
-                    case AnimeStatus.Dropped:
-                        list = user.dropped;
-                        break;
-                    default:
-                        break;
-                }
-
+                var list = user.animeList.Where(x => x.status == status);
+                
                 CloudBlobContainer container = BlobService.GetCoversContainer();
                 DateTime expiryTime = DateTime.UtcNow.AddSeconds(30);
                 
@@ -48,11 +32,12 @@ namespace Animes.Club.Controllers
                     id = x.animeId,
                     name = x.anime.name,
                     picture = BlobService.GetBlobSasUri(container, x.anime.picture, expiryTime),
-                    rating = x.anime.rating
+                    rating = x.rating.HasValue ? x.rating.Value : x.anime.rating.GetValueOrDefault()
                 }).ToList();
             }
         }
 
+        // POST: api/AnimeList
         public void Post(AnimeDTO data)
         {
             using (var context = new AnimesClubContext())
@@ -60,29 +45,9 @@ namespace Animes.Club.Controllers
                 var user = context.Users.Find(long.Parse(User.Identity.Name));
                 var anime = context.Animes.Find(data.id);
 
-                user.watching.Remove(user.watching.FirstOrDefault(x => x.animeId == anime.id));
-                user.completed.Remove(user.completed.FirstOrDefault(x => x.animeId == anime.id));
-                user.todo.Remove(user.todo.FirstOrDefault(x => x.animeId == anime.id));
-                user.dropped.Remove(user.dropped.FirstOrDefault(x => x.animeId == anime.id));
-
-                switch (data.status)
-                {
-                    case AnimeStatus.Watching:
-                        user.watching.Add(new Watching{ anime = anime });
-                        break;
-                    case AnimeStatus.Completed:
-                        user.completed.Add(new Completed{ anime = anime });
-                        break;
-                    case AnimeStatus.Todo:
-                        user.todo.Add(new Todo{ anime = anime });
-                        break;
-                    case AnimeStatus.Dropped:
-                        user.dropped.Add(new Dropped{ anime = anime });
-                        break;
-                    default:
-                        break;
-                }
-
+                user.animeList.Remove(user.animeList.FirstOrDefault(x => x.animeId == anime.id));
+                user.animeList.Add(new AnimeList { anime = anime, status = data.status, rating = data.rating });
+                
                 context.SaveChanges();
             }
         }

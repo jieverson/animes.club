@@ -15,6 +15,7 @@ namespace Animes.Club.Controllers
     public class LoginController : ApiController
     {
 
+        // GET: api/Login (is authenticated?)
         public LoginSuccessDTO Get()
         {
             if (User.Identity.IsAuthenticated)
@@ -28,7 +29,6 @@ namespace Animes.Club.Controllers
                         sessionId = user.id,
                         user = new UserDTO
                         {
-                            id = user.id,
                             username = user.username,
                             email = user.email,
                             picture = user.picture
@@ -42,6 +42,7 @@ namespace Animes.Club.Controllers
             }
         }
 
+        // POST: api/Login
         public LoginSuccessDTO Post(AuthDTO data)
         {
             using (var context = new AnimesClubContext())
@@ -57,7 +58,6 @@ namespace Animes.Club.Controllers
                         sessionId = user.id,
                         user = new UserDTO
                         {
-                            id = user.id,
                             username = user.username,
                             email = user.email,
                             picture = user.picture
@@ -71,6 +71,7 @@ namespace Animes.Club.Controllers
             }
         }
 
+        // DELETE: api/Login
         public void Delete()
         {
             FormsAuthentication.SignOut();

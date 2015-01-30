@@ -23,5 +23,7 @@ namespace Animes.Club.Models
 
         public float? rating { get; set; }
 
+        public virtual ICollection<AnimeTag> tags { get; set; }
+
     }
 }

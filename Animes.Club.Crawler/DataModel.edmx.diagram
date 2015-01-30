@@ -4,9 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="176c58bb781d45ecb604a8e8516a211a" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.anidb" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Animes" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="5608f769b49f4ff2b9e2d097a1df7491" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.anidb" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Animes" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Tags" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Users" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <AssociationConnector Association="Model.AnimeTags" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.Completed" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.Dropped" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.Todo" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.Watching" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

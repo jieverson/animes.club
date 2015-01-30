@@ -1,1 +1,20 @@
-﻿<h1>Trending</h1>
+﻿<div class="anime-list">
+    <h1 class="title">Trending</h1>
+
+    <div class="row-fluid">
+        <div class="col-sm-6 col-md-4" ng-repeat="item in list">
+            <div class="thumbnail">
+                <img ng-src="{{item.picture}}" class="pull-left">
+                <div class="caption">
+                    <h4 style=""><a href="/anime/{{item.id}}/{{item.name.split(' ').join('_')}}">{{item.name}}</a></h4>
+                    <p>
+                        OVA
+                    </p>
+                    <p>
+                        <rating ng-model="item.rating" readonly="true"></rating>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

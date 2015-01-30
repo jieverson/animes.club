@@ -17,21 +17,12 @@ namespace Animes.Club.Controllers
 {
     public class SearchController : ApiController
     {
-        // GET: api/Anime
-        //public IEnumerable<Anime> Get()
-        //{
-        //    using (var context = new Animes.Club.Models.AnimesClubContext())
-        //    {
-        //        return context.Animes.ToList();
-        //    }
-        //}
-
+        
         // GET: api/Search?q=abc
-        [OutputCache(Duration = 1 * 60)]
         public IEnumerable<SearchResultDTO> Get(String q)
         {
             CloudBlobContainer container = BlobService.GetCoversContainer();
-            DateTime expiryTime = DateTime.UtcNow.AddMinutes(2);
+            DateTime expiryTime = DateTime.UtcNow.AddSeconds(30);
 
             using (var context = new AnimesClubContext())
             {
@@ -45,19 +36,5 @@ namespace Animes.Club.Controllers
             }
         }
 
-        //// POST: api/Anime
-        //public void Post([FromBody]string value)
-        //{
-        //}
-
-        //// PUT: api/Anime/5
-        //public void Put(int id, [FromBody]string value)
-        //{
-        //}
-
-        //// DELETE: api/Anime/5
-        //public void Delete(int id)
-        //{
-        //}
     }
 }
