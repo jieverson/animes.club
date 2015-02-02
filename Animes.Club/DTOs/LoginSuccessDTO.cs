@@ -8,11 +8,11 @@ namespace Animes.Club.DTOs
     public class LoginSuccessDTO
     {
 
-        public long sessionId { get; set; }
+        public String username { get; set; }
 
-        public UserDTO user { get; set; }
+        public String email { get; set; }
 
-        public String message { get; set; }
+        public String picture { get; set; }
 
     }
 }

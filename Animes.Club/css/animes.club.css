@@ -55,6 +55,8 @@ a:focus {
 .navbar-fixed-top .profile-image {
   margin-top: -10px;
   margin-bottom: -10px;
+  height: 40px;
+  width: 40px;
 }
 .left-menu {
   width: 225px;
@@ -96,5 +98,10 @@ footer .container {
 }
 .anime-profile .rating {
   font-size: 25px;
+}
+.user-profile .thumbnail {
+  width: 200px;
+  margin-left: auto;
+  margin-top: 20px;
 }
 /*# sourceMappingURL=animes.club.css.map */

@@ -1,7 +1,5 @@
-﻿App.controller('User', ['$scope', '$routeParams', function ($scope, $routeParams) {
-    $scope.username = $routeParams.username;
-
-    $http.get('/api/anime/' + $scope.username).
+﻿App.controller('User', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
+    $http.get('/api/user/' + $routeParams.username).
       success(function (data, status, headers, config) {
           $scope.user = data;
       }).

@@ -6,7 +6,7 @@
           .post('/api/register', { username: username, email: email, password: password, captchaResponse: captchaResponse })
           .then(function (result) {
               if (result.data) {
-                  return result.data.user;
+                  return result.data;
               }
               else {
                   return null;
@@ -19,7 +19,7 @@
           .post('/api/login', { username: username, password: password, remember: remember })
           .then(function (result) {
               if (result.data) {
-                  return result.data.user;
+                  return result.data;
               }
               else {
                   return null;
@@ -37,7 +37,7 @@
           .get('/api/login')
           .then(function (result) {
               if (result.data) {
-                  return result.data.user;
+                  return result.data;
               }
               else {
                   return null;

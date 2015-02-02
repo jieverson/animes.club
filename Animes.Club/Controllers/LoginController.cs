@@ -26,13 +26,9 @@ namespace Animes.Club.Controllers
 
                     return new LoginSuccessDTO
                     {
-                        sessionId = user.id,
-                        user = new UserDTO
-                        {
-                            username = user.username,
-                            email = user.email,
-                            picture = user.picture
-                        }
+                        username = user.username,
+                        email = user.email,
+                        picture = user.picture
                     };
                 }
             }
@@ -55,13 +51,9 @@ namespace Animes.Club.Controllers
 
                     return new LoginSuccessDTO
                     {
-                        sessionId = user.id,
-                        user = new UserDTO
-                        {
-                            username = user.username,
-                            email = user.email,
-                            picture = user.picture
-                        }
+                        username = user.username,
+                        email = user.email,
+                        picture = user.picture
                     };
                 }
                 else

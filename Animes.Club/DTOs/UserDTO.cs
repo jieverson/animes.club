@@ -10,9 +10,9 @@ namespace Animes.Club.DTOs
 
         public String username { get; set; }
 
-        public String email { get; set; }
-
         public String picture { get; set; }
+
+        public float compatibility { get; set; }
 
     }
 }

@@ -265,6 +265,7 @@
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Service\BlobService.cs" />
     <Compile Include="Service\CaptchaService.cs" />
+    <Compile Include="Service\CompatibilityService.cs" />
     <Compile Include="Service\GravatarService.cs" />
     <Compile Include="Service\PasswordService.cs" />
     <Compile Include="Service\UserService.cs" />
@@ -319,7 +320,6 @@
     <Content Include="css\prefixer.min.css">
       <DependentUpon>prefixer.css</DependentUpon>
     </Content>
-    <Content Include="css\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -1219,8 +1219,7 @@
     <Content Include="scripts\sammy-0.7.4.js" />
     <Content Include="scripts\sammy-0.7.4.min.js" />
     <Content Include="scripts\typeahead.bundle.js" />
-    <Content Include="scripts\ui-bootstrap-custom-0.12.0.js" />
-    <Content Include="scripts\ui-bootstrap-custom-tpls-0.12.0.js" />
+    <Content Include="scripts\ui-bootstrap-tpls-0.12.0.js" />
     <Content Include="scripts\_references.js" />
     <Content Include="sql\anidb_import.sql" />
     <Content Include="sql\create_anidb.sql" />

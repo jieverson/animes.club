@@ -49,8 +49,7 @@ namespace Animes.Club
                 "~/scripts/typeahead.bundle.js",
                 "~/scripts/handlebars-v2.0.0.js",
                 "~/scripts/alertify.js",
-                "~/scripts/ui-bootstrap-custom-0.12.0.js",
-                "~/scripts/ui-bootstrap-custom-tpls-0.12.0.js"
+                "~/scripts/ui-bootstrap-tpls-0.12.0.js"
                 ));
 
             //bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
