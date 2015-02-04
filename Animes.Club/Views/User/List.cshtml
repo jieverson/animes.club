@@ -1,0 +1,17 @@
+﻿<div>
+    <h1 class="title" ng-bind="title"></h1>
+
+    <div class="row-fluid">
+        <div class="col-sm-6 col-md-4" ng-repeat="item in list">
+            <div>
+                <img ng-src="{{item.picture}}" class="pull-left img-circle">
+                <div class="caption">
+                    <h4><a href="/user/{{item.username}}">{{item.username}}</a></h4>
+                    <p>
+                        Animes: <span ng-bind="item.animes"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

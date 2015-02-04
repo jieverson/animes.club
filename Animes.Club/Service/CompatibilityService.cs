@@ -27,6 +27,8 @@ namespace Animes.Club.Service
 
                 var count = animes.Count();
 
+                if (count == 0) return 0;
+
                 var sum = (int)((10 - (animes.Sum(x => Math.Abs(x.myRating - x.friendRating)) / count)) * 10);
 
                 return sum;

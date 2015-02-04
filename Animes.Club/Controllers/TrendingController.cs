@@ -31,6 +31,7 @@ namespace Animes.Club.Controllers
                     id = x.id,
                     name = x.name,
                     picture = BlobService.GetBlobSasUri(container, x.picture, expiryTime),
+                    episodes = x.episodes,
                     rating = x.rating.GetValueOrDefault()
                 }).ToList();
             }

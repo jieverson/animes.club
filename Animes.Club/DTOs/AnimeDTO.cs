@@ -17,6 +17,8 @@ namespace Animes.Club.DTOs
 
         public String description { get; set; }
 
+        public int? episodes { get; set; }
+
         public List<TagDTO> tags { get; set; }
 
         public float? rating { get; set; }

@@ -34,6 +34,7 @@ namespace Animes.Club.Controllers
                     id = anime.id,
                     name = anime.name,
                     description = anime.description,
+                    episodes = anime.episodes,
                     picture = coverSasUri,
                     tags = tags
                 };

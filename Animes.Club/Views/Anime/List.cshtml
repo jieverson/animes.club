@@ -8,9 +8,9 @@
             <div class="thumbnail">
                 <img ng-src="{{item.picture}}" class="pull-left">
                 <div class="caption">
-                    <h4 style=""><a href="/anime/{{item.id}}/{{item.name.replace('/',' ').split(' ').join('_')}}">{{item.name}}</a></h4>
+                    <h4><a href="/anime/{{item.id}}/{{item.name.replace('/',' ').split(' ').join('_')}}">{{item.name}}</a></h4>
                     <p>
-                        OVA
+                        Episodes: <span ng-bind="item.episodes"></span>
                     </p>
                     <p ng-if="item.rating">
                         <rating ng-model="item.rating" readonly="true"></rating>

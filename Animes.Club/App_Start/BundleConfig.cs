@@ -28,6 +28,7 @@ namespace Animes.Club
                 "~/app/controller/user.js",
                 "~/app/controller/anime.js",
                 "~/app/controller/my-list.js",
+                "~/app/controller/people.js",
                 "~/app/service/auth.js"
                 ));
 

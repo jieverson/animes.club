@@ -193,6 +193,7 @@
     <Compile Include="Controllers\AnimeController.cs" />
     <Compile Include="Controllers\AnimeListController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\TrendingController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -201,6 +202,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DTOs\AnimeDTO.cs" />
     <Compile Include="DTOs\AuthDTO.cs" />
+    <Compile Include="DTOs\PeopleDTO.cs" />
     <Compile Include="DTOs\RegisterDTO.cs" />
     <Compile Include="DTOs\SearchResultDTO.cs" />
     <Compile Include="DTOs\LoginSuccessDTO.cs" />
@@ -279,6 +281,7 @@
     <Compile Include="Service\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\controller\people.js" />
     <Content Include="app\controller\trending.js" />
     <Content Include="css\alertify.core.css" />
     <Content Include="css\alertify.default.css" />
@@ -1260,6 +1263,7 @@
     <Content Include="Views\Anime\Trending.cshtml" />
     <Content Include="Views\Login\Terms.cshtml" />
     <Content Include="Views\User\Profile.cshtml" />
+    <Content Include="Views\User\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

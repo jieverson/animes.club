@@ -14,6 +14,7 @@
         $routeProvider.when("/dropped", { templateUrl: "/view/anime/list", controller: "MyLists", status: 4 });
         $routeProvider.when("/anime/:id/:name", { templateUrl: "/view/anime/profile", controller: "Anime" });
         $routeProvider.when("/user/:username", { templateUrl: "/view/user/profile", controller: "User" });
+        $routeProvider.when("/people", { templateUrl: "/view/user/list", controller: "People" });
         $routeProvider.when("/terms", { templateUrl: "/view/login/terms" });
 
         //Handle
