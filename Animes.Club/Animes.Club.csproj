@@ -254,6 +254,14 @@
     <Compile Include="Migrations\201501300253002_anime list data structure change.Designer.cs">
       <DependentUpon>201501300253002_anime list data structure change.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201502040004020_add episodes to Anime.cs" />
+    <Compile Include="Migrations\201502040004020_add episodes to Anime.Designer.cs">
+      <DependentUpon>201502040004020_add episodes to Anime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502040017014_episodes nullable.cs" />
+    <Compile Include="Migrations\201502040017014_episodes nullable.Designer.cs">
+      <DependentUpon>201502040017014_episodes nullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Anime.cs" />
     <Compile Include="Models\AnimeList.cs" />
@@ -1296,6 +1304,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501300253002_anime list data structure change.resx">
       <DependentUpon>201501300253002_anime list data structure change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502040004020_add episodes to Anime.resx">
+      <DependentUpon>201502040004020_add episodes to Anime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502040017014_episodes nullable.resx">
+      <DependentUpon>201502040017014_episodes nullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

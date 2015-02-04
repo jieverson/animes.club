@@ -5,15 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5608f769b49f4ff2b9e2d097a1df7491" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.anidb" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Animes" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Tags" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Users" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
-        <AssociationConnector Association="Model.AnimeTags" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.Completed" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.Dropped" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.Todo" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.Watching" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.AnimeLists" Width="1.5" PointX="3" PointY="2.375" />
+        <EntityTypeShape EntityType="Model.Animes" Width="1.5" PointX="0.75" PointY="2.125" />
+        <EntityTypeShape EntityType="Model.Tags" Width="1.5" PointX="3" PointY="5.5" />
+        <EntityTypeShape EntityType="Model.Users" Width="1.5" PointX="0.75" PointY="7.375" />
+        <AssociationConnector Association="Model.FK_dbo_AnimeLists_dbo_Animes_animeId" />
+        <AssociationConnector Association="Model.FK_dbo_AnimeLists_dbo_Users_userId" />
+        <AssociationConnector Association="Model.AnimeTags" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

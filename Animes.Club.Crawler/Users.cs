@@ -16,10 +16,7 @@ namespace Animes.Club.Crawler
     {
         public Users()
         {
-            this.Animes = new HashSet<Animes>();
-            this.Animes1 = new HashSet<Animes>();
-            this.Animes2 = new HashSet<Animes>();
-            this.Animes3 = new HashSet<Animes>();
+            this.AnimeLists = new HashSet<AnimeLists>();
         }
     
         public long id { get; set; }
@@ -28,9 +25,6 @@ namespace Animes.Club.Crawler
         public string password { get; set; }
         public string picture { get; set; }
     
-        public virtual ICollection<Animes> Animes { get; set; }
-        public virtual ICollection<Animes> Animes1 { get; set; }
-        public virtual ICollection<Animes> Animes2 { get; set; }
-        public virtual ICollection<Animes> Animes3 { get; set; }
+        public virtual ICollection<AnimeLists> AnimeLists { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace Animes.Club.Controllers
             {
                 var trending = context.Animes.OrderByDescending(a => context.Users.Count(u => u.animeList.Any(l => l.animeId == a.id))).Take(30).ToList();
 
-                CloudBlobContainer container = BlobService.GetCoversContainer();
+                CloudBlobContainer container = BlobService.GetCoversContainer(false);
                 DateTime expiryTime = DateTime.UtcNow.AddSeconds(30);
 
                 return trending.Select(x => new AnimeDTO

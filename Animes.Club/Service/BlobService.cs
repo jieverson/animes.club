@@ -11,11 +11,11 @@ namespace Animes.Club.Service
     public static class BlobService
     {
 
-        public static CloudBlobContainer GetCoversContainer()
+        public static CloudBlobContainer GetCoversContainer(bool small)
         {
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
             CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-            CloudBlobContainer container = blobClient.GetContainerReference("covers");
+            CloudBlobContainer container = blobClient.GetContainerReference(small ? "small" : "big");
             return container;
         }
 

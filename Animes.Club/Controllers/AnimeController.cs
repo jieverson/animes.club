@@ -24,7 +24,7 @@ namespace Animes.Club.Controllers
             {
                 var anime = context.Animes.Find(id);
 
-                CloudBlobContainer container = BlobService.GetCoversContainer();
+                CloudBlobContainer container = BlobService.GetCoversContainer(false);
                 DateTime expiryTime = DateTime.UtcNow.AddSeconds(30);
                 String coverSasUri = BlobService.GetBlobSasUri(container, anime.picture, expiryTime);
                 var tags = anime.tags.Select(x => new TagDTO { value = x.tag.value, color = x.tag.color }).ToList();

@@ -17,6 +17,8 @@ namespace Animes.Club.Crawler
 
             //AnidbTableTagParser.Do();
 
+            MyAnimeListCrawler.Do();
+
         }
     }
 }

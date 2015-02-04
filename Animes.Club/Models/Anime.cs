@@ -21,6 +21,8 @@ namespace Animes.Club.Models
 
         public String description { get; set; }
 
+        public int? episodes { get; set; }
+
         public float? rating { get; set; }
 
         public virtual ICollection<AnimeTag> tags { get; set; }

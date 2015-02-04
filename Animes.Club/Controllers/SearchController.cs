@@ -21,7 +21,7 @@ namespace Animes.Club.Controllers
         // GET: api/Search?q=abc
         public IEnumerable<SearchResultDTO> Get(String q)
         {
-            CloudBlobContainer container = BlobService.GetCoversContainer();
+            CloudBlobContainer container = BlobService.GetCoversContainer(true);
             DateTime expiryTime = DateTime.UtcNow.AddSeconds(30);
 
             using (var context = new AnimesClubContext())

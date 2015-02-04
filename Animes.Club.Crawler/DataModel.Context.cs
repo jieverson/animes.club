@@ -25,7 +25,7 @@ namespace Animes.Club.Crawler
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<anidb> anidb { get; set; }
+        public virtual DbSet<AnimeLists> AnimeLists { get; set; }
         public virtual DbSet<Animes> Animes { get; set; }
         public virtual DbSet<Tags> Tags { get; set; }
         public virtual DbSet<Users> Users { get; set; }
