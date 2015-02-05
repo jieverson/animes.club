@@ -1,9 +1,11 @@
 ﻿App.controller('MyLists', ['$scope', '$http', '$route', function ($scope, $http, $route) {
     var status = $route.current.status;
 
-    $http.get('/api/animelist?status=' + status).
-      success(function (data, status, headers, config) {
+    $http.get('/api/animelist?status=' + status)
+      .success(function (data, status, headers, config) {
           $scope.list = data;
+      })
+      .error(function (data, status, headers, config) {
       });
 
     var title;
@@ -21,6 +23,5 @@
             title = "Dropped";
             break;
     }
-    
     $scope.title = title;
 }]);

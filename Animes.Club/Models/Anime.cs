@@ -27,5 +27,8 @@ namespace Animes.Club.Models
 
         public virtual ICollection<AnimeTag> tags { get; set; }
 
+        [Required, DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime created { get; set; }
+
     }
 }

@@ -14,7 +14,7 @@ namespace Animes.Club.Controllers
     {
 
         // GET: api/People (1 hour cache)
-        [OutputCache(Duration = 60 * 60)]
+        //[OutputCache(Duration = 60 * 60)]
         public IEnumerable<PeopleDTO> Get()
         {
             using (var context = new AnimesClubContext())

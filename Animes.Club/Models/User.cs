@@ -29,5 +29,8 @@ namespace Animes.Club.Models
 
         public virtual ICollection<AnimeList> animeList { get; set; }
 
+        [Required, DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime created { get; set; }
+
     }
 }

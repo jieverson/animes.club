@@ -14,7 +14,7 @@
     <ul class="nav navbar-nav navbar-right">
         <li class="dropdown" ng-if="currentUser" ng-controller="Login">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img class="profile-image img-circle" ng-src="{{currentUser.picture}}" />
+                <img class="profile-image img-circle" ng-src="{{currentUser.picture.toLowerCase()}}" />
                 <span ng-bind="currentUser.username"></span><i class="caret"></i>
             </a>
             <ul class="dropdown-menu">

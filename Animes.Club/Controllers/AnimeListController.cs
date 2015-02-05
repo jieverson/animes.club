@@ -24,7 +24,7 @@ namespace Animes.Club.Controllers
                 
                 var list = user.animeList.Where(x => x.status == status);
                 
-                CloudBlobContainer container = BlobService.GetCoversContainer(false);
+                CloudBlobContainer container = BlobService.GetCoversContainer();
                 DateTime expiryTime = DateTime.UtcNow.AddSeconds(30);
                 
                 return list.Select(x => new AnimeDTO

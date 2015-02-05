@@ -1,13 +1,13 @@
 ﻿<nav class="left-menu" data-spy="affix" data-offset-top="50" ng-controller="Menu">
     <ul class="list-unstyled">
         <li ng-repeat="item in items">
-            <span ng-hide="item.show" class="text-muted">{{item.group}}</span>
+            <span ng-show="item.group" class="text-muted" ng-bind="item.group"></span>
 
-            <h5 ng-hide="item.group" ng-class="{ 'text-danger': item.selected() }" ng-if="!item.auth || currentUser">
-                <a href="{{item.url}}" ng-hide="item.selected()"><i ng-show="item.icon" class="fa {{item.icon}}"></i>{{item.text}}</a>
-                <span ng-show="item.selected()"><i ng-show="item.icon" class="fa {{item.icon}}"></i>{{item.text}}</span>
-                <span ng-show="item.badge" class="badge alert-danger">{{item.badge}}</span>
-                <small ng-show="item.hint" class="text-muted">{{item.hint}}</small>
+            <h5 ng-hide="item.group" ng-if="!item.auth || currentUser">
+                <a href="{{item.url}}" ng-hide="item.selected()"><i ng-show="item.icon" class="fa {{item.icon}}"></i> <span ng-bind="item.text"></span></a>
+                <span ng-show="item.selected()" class="text-info"><i ng-show="item.icon" class="fa {{item.icon}}"></i> <span ng-bind="item.text"></span></span>
+                <span ng-show="item.badge" class="badge alert-danger" ng-bind="item.badge"></span>
+                <small ng-show="item.hint" class="text-muted" ng-bind="item.hint"></small>
             </h5>
         </li>
 

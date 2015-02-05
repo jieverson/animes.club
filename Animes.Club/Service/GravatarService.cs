@@ -16,7 +16,7 @@ namespace Animes.Club.Service
 
         public static String CreateHash(String text)
         {
-            return Encrypt.MD5(text.Trim().ToLower());
+            return Encrypt.MD5(text.Trim().ToLower()).ToLower();
         }
 
     }

@@ -10,12 +10,10 @@
           });
     };
 
-    $http.get('/api/anime/' + $routeParams.id).
-      success(function (data, status, headers, config) {
+    $http.get('/api/anime/' + $routeParams.id)
+      .success(function (data, status, headers, config) {
           $scope.anime = data;
-      }).
-      error(function(data, status, headers, config) {
-          // called asynchronously if an error occurs
-          // or server returns response with an error status.
+      })
+      .error(function(data, status, headers, config) {
       });
 }]);

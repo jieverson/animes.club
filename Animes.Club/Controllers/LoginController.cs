@@ -44,7 +44,7 @@ namespace Animes.Club.Controllers
             using (var context = new AnimesClubContext())
             {
                 var passwordHash = PasswordService.GetHash(data.password);
-                var user = context.Users.FirstOrDefault(x => x.username == data.username && x.password == passwordHash);
+                var user = context.Users.FirstOrDefault(x => (x.username.ToLower() == data.username.ToLower() || x.email.ToLower() == data.username.ToLower()) && x.password == passwordHash);
                 if (user != null)
                 {
                     FormsAuthentication.SetAuthCookie(user.id.ToString(), data.remember);

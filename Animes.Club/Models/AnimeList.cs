@@ -27,5 +27,8 @@ namespace Animes.Club.Models
 
         public float? rating { get; set; }
 
+        [Required, DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime created { get; set; }
+
     }
 }

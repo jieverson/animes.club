@@ -16,14 +16,14 @@ namespace Animes.Club.Controllers
     {
 
         // GET: api/Trending (6 hours cache)
-        [OutputCache(Duration = 6 * 60 * 60)]
+        //[OutputCache(Duration = 6 * 60 * 60)]
         public IEnumerable<AnimeDTO> Get()
         {
             using (var context = new AnimesClubContext())
             {
-                var trending = context.Animes.OrderByDescending(a => context.Users.Count(u => u.animeList.Any(l => l.animeId == a.id))).Take(30).ToList();
+                var trending = context.Animes.OrderByDescending(a => context.Users.Count(u => u.animeList.Any(l => l.animeId == a.id))).Take(12).ToList();
 
-                CloudBlobContainer container = BlobService.GetCoversContainer(false);
+                CloudBlobContainer container = BlobService.GetCoversContainer();
                 DateTime expiryTime = DateTime.UtcNow.AddSeconds(30);
 
                 return trending.Select(x => new AnimeDTO
